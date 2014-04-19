@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pack>
+  <name>Glossy Emoticons</name>
+  <emoticons>
+    <smile path="Smiling_face.png">:-)</smile>
+    <smile path="Smiling_face.png">:)</smile>
+    <smile path="Sad_face.png">:-(</smile>
+    <smile path="Sad_face.png">:(</smile>
+    <smile path="Winking_face.png">;-)</smile>
+    <smile path="Winking_face.png">;)</smile>
+    <smile path="Indifferent_face.png">:-|</smile>
+    <smile path="Indifferent_face.png">:|</smile>
+    <smile path="Angry_face.png">&gt;:-(</smile>
+    <smile path="Angry_face.png">&gt;:(</smile>
+    <smile path="Laughing_face.png">:-D</smile>
+    <smile path="Laughing_face.png">:D</smile>
+    <smile path="Laughing_face.png">:-d</smile>
+    <smile path="Laughing_face.png">:d</smile>
+    <smile path="ermm.png">:/</smile>
+    <smile path="ermm.png">:-/</smile>
+    <smile path="Tongue_Out.png">:-P</smile>
+    <smile path="Tongue_Out.png">:P</smile>
+    <smile path="Tongue_Out.png">:-p</smile>
+    <smile path="Tongue_Out.png">:p</smile>
+    <smile path="Confused_face.png">:-S</smile>
+    <smile path="Confused_face.png">:S</smile>
+    <smile path="Confused_face.png">:-s</smile>
+    <smile path="Confused_face.png">:s</smile>
+    <smile path="Amazed_face.png">:-O</smile>
+    <smile path="Amazed_face.png">:O</smile>
+    <smile path="Amazed_face.png">:-o</smile>
+    <smile path="Amazed_face.png">:o</smile>
+  </emoticons>
+</pack>

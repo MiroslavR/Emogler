@@ -1,0 +1,16 @@
+{
+    "category": "extension",
+    "name":
+        {
+            "en_US": "Listening To",
+            "sk_SK": "Čo počúvam"
+        },
+    "description":
+        {
+            "en_US": "Prints current song info retrieved from MPRIS-compatible media players.",
+            "sk_SK": "Vypíše údaje o aktuálnej skladbe získavané z prehrávačov cez rozhranie MPRIS."
+        },
+    "version": "0.0.1",
+    "author": "Miroslav Remák",
+    "dependencies": []
+}

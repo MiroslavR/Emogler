@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>data/gui/add.png</file>
+        <file>data/gui/cancel.png</file>
+        <file>data/gui/commands.png</file>
+        <file>data/gui/disconnect.png</file>
+        <file>data/gui/emoticons.png</file>
+        <file>data/gui/help.png</file>
+        <file>data/gui/info.png</file>
+        <file>data/gui/new.png</file>
+        <file>data/gui/options.png</file>
+        <file>data/gui/plugin.png</file>
+        <file>data/gui/quit.png</file>
+        <file>data/gui/reveal.png</file>
+        <file>data/gui/save.png</file>
+        <file>data/gui/send.png</file>
+        <file>data/gui/service.png</file>
+        <file>data/gui/trashcan.png</file>
+        <file>data/emogler.png</file>
+    </qresource>
+</RCC>

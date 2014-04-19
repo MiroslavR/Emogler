@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pack>
+  <name>Standard Emoticons</name>
+  <emoticons>
+    <smile path="Smiling_face.png">:-)</smile>
+    <smile path="Smiling_face.png">:)</smile>
+    <smile path="Crying_face.png">:'(</smile>
+    <smile path="Crying_face.png">:'-(</smile>
+    <smile path="Crying_face.png">;_;</smile>
+    <smile path="Sad_face.png">:-(</smile>
+    <smile path="Sad_face.png">:(</smile>
+    <smile path="Cool_face.png">8-)</smile>
+    <smile path="Cool_face.png">8)</smile>
+    <smile path="Tongue_in_cheek.png">:-P</smile>
+    <smile path="Tongue_in_cheek.png">:P</smile>
+    <smile path="Tongue_Out.png">:-p</smile>
+    <smile path="Tongue_Out.png">:p</smile>
+    <smile path="Sleeping_face.png">zZz</smile>
+    <smile path="Amazed_face.png">:-O</smile>
+    <smile path="Amazed_face.png">:O</smile>
+    <smile path="Amazed_face.png">:-o</smile>
+    <smile path="Amazed_face.png">:o</smile>
+    <smile path="Laughing_face.png">:-D</smile>
+    <smile path="Laughing_face.png">:D</smile>
+    <smile path="Winking_face.png">;-)</smile>
+    <smile path="Winking_face.png">;)</smile>
+    <smile path="Worried_face.png">:-|</smile>
+    <smile path="Worried_face.png">:|</smile>
+    <smile path="Devil_face.png">&gt;:-(</smile>
+    <smile path="Devil_face.png">&gt;:(</smile>
+    <smile path="Evil_face.png">:-@</smile>
+    <smile path="Evil_face.png">:@</smile>
+    <smile path="Angelic_face.png">0:-)</smile>
+    <smile path="Angelic_face.png">0:)</smile>
+    <smile path="Angelic_face.png">O:-)</smile>
+    <smile path="Angelic_face.png">O:)</smile>
+    <smile path="Question_face.png">:-?</smile>
+    <smile path="Question_face.png">:?</smile>
+    <smile path="Squeezed_eyes_laughing.png">xD</smile>
+    <smile path="Squeezed_eyes_laughing.png">XD</smile>
+    <smile path="Loving_face.png">&lt;3</smile>
+  </emoticons>
+</pack>
