@@ -98,7 +98,7 @@
     <message>
         <location filename="../../src/gui/globalsettingsdialog.ui" line="159"/>
         <source>Highlighting</source>
-        <translation>Zvrýrazňovanie</translation>
+        <translation>Zvýrazňovanie</translation>
     </message>
     <message>
         <location filename="../../src/gui/globalsettingsdialog.ui" line="168"/>
@@ -192,7 +192,7 @@
     <message>
         <location filename="../../src/gui/plugindetailsdialog.ui" line="14"/>
         <source>Plugin Details</source>
-        <translation>Podrobnosti o module</translation>
+        <translation>Podrobnosti modulu</translation>
     </message>
     <message>
         <location filename="../../src/gui/plugindetailsdialog.ui" line="31"/>
