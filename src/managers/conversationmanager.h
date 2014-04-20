@@ -24,12 +24,16 @@
 class ConversationManager : public QObject
 {
     Q_OBJECT
-public:
-    explicit ConversationManager(QObject *parent = 0);
 
-signals:
+    public:
+        explicit ConversationManager(QObject * parent = 0);
 
-public slots:
+        static QString optimize(const QString & text);
+
+    signals:
+
+    public slots:
+
 
 };
 

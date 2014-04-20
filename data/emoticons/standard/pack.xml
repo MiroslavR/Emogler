@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pack>
+  <name>Standard Emoticons</name>
+  <emoticons>
+    <emot path="Smiling_face.png">:-)</emot>
+    <emot path="Smiling_face.png">:)</emot>
+    <emot path="Crying_face.png">:'(</emot>
+    <emot path="Crying_face.png">:'-(</emot>
+    <emot path="Crying_face.png">;_;</emot>
+    <emot path="Sad_face.png">:-(</emot>
+    <emot path="Sad_face.png">:(</emot>
+    <emot path="Cool_face.png">8-)</emot>
+    <emot path="Cool_face.png">8)</emot>
+    <emot path="Tongue_in_cheek.png">:-P</emot>
+    <emot path="Tongue_in_cheek.png">:P</emot>
+    <emot path="Tongue_Out.png">:-p</emot>
+    <emot path="Tongue_Out.png">:p</emot>
+    <emot path="Sleeping_face.png">zZz</emot>
+    <emot path="Amazed_face.png">:-O</emot>
+    <emot path="Amazed_face.png">:O</emot>
+    <emot path="Amazed_face.png">:-o</emot>
+    <emot path="Amazed_face.png">:o</emot>
+    <emot path="Laughing_face.png">:-D</emot>
+    <emot path="Laughing_face.png">:D</emot>
+    <emot path="Winking_face.png">;-)</emot>
+    <emot path="Winking_face.png">;)</emot>
+    <emot path="Worried_face.png">:-|</emot>
+    <emot path="Worried_face.png">:|</emot>
+    <emot path="Devil_face.png">&gt;:-(</emot>
+    <emot path="Devil_face.png">&gt;:(</emot>
+    <emot path="Evil_face.png">:-@</emot>
+    <emot path="Evil_face.png">:@</emot>
+    <emot path="Angelic_face.png">0:-)</emot>
+    <emot path="Angelic_face.png">0:)</emot>
+    <emot path="Angelic_face.png">O:-)</emot>
+    <emot path="Angelic_face.png">O:)</emot>
+    <emot path="Question_face.png">:-?</emot>
+    <emot path="Question_face.png">:?</emot>
+    <emot path="Squeezed_eyes_laughing.png">xD</emot>
+    <emot path="Squeezed_eyes_laughing.png">XD</emot>
+    <emot path="Loving_face.png">&lt;3</emot>
+  </emoticons>
+</pack>

@@ -36,12 +36,12 @@ void Emoticon::setIcon(const QString & icon)
     mIcon = icon;
 }
 
-QString Emoticon::face()
+QString Emoticon::face() const
 {
     return mFace;
 }
 
-QString Emoticon::icon()
+QString Emoticon::icon() const
 {
     return mIcon;
 }

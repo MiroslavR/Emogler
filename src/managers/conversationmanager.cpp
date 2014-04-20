@@ -22,3 +22,8 @@ ConversationManager::ConversationManager(QObject *parent) :
     QObject(parent)
 {
 }
+
+QString ConversationManager::optimize(const QString & text)
+{
+    return text.toHtmlEscaped().replace("\n", "<br>");
+}

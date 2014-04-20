@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml xmlpatterns
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -23,7 +23,8 @@ include(src/src.pri)
 
 RESOURCES += \
     icons.qrc \
-    langs.qrc
+    langs.qrc \
+    xml.qrc
 
 TRANSLATIONS = data/langs/emo_en.ts \
     data/langs/emo_sk.ts

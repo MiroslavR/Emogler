@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pack>
+  <name>Pixelized Emoticons</name>
+  <emoticons>
+    <emot path="Smiling_face.png">:-)</emot>
+    <emot path="Smiling_face.png">:)</emot>
+    <emot path="Crying_face.png">:'(</emot>
+    <emot path="Crying_face.png">:'-(</emot>
+    <emot path="Crying_face.png">;_;</emot>
+    <emot path="Sad_face.png">:-(</emot>
+    <emot path="Sad_face.png">:(</emot>
+    <emot path="Sick_face.png">x-(</emot>
+    <emot path="Sick_face.png">x(</emot>
+    <emot path="Sick_face.png">:-x</emot>
+    <emot path="Sick_face.png">:x</emot>
+    <emot path="Sick_face.png">:-X</emot>
+    <emot path="Sick_face.png">:X</emot>
+    <emot path="Kissing_face.png">:-*</emot>
+    <emot path="Kissing_face.png">:*</emot>
+    <emot path="Wat_face.png">O_O</emot>
+    <emot path="Wat_face.png">O.O</emot>
+    <emot path="Wat_face.png">o_o</emot>
+    <emot path="Wat_face.png">o.o</emot>
+    <emot path="Wat2_face.png">o_O</emot>
+    <emot path="Wat2_face.png">O_o</emot>
+    <emot path="15.png">:/</emot>
+    <emot path="15.png">:-/</emot>
+    <emot path="15.png">:\</emot>
+    <emot path="15.png">:-\</emot>
+    <emot path="^_^.png">^_^</emot>
+    <emot path="^_^.png">^^</emot>
+    <emot path="Cool_face.png">8-)</emot>
+    <emot path="Cool_face.png">8)</emot>
+    <emot path="Tongue_out.png">:-P</emot>
+    <emot path="Tongue_out.png">:P</emot>
+    <emot path="Tongue_out.png">:-p</emot>
+    <emot path="Tongue_out.png">:p</emot>
+    <emot path="Amazed_face.png">:-O</emot>
+    <emot path="Amazed_face.png">:O</emot>
+    <emot path="Amazed_face.png">:-o</emot>
+    <emot path="Amazed_face.png">:o</emot>
+    <emot path="Laughing_face.png">:-D</emot>
+    <emot path="Laughing_face.png">:D</emot>
+    <emot path="Evil_face.png">&gt;:-D</emot>
+    <emot path="Evil_face.png">&gt;:D</emot>
+    <emot path="Evil_face.png">&gt;D</emot>
+    <emot path="Winking_face.png">;-)</emot>
+    <emot path="Winking_face.png">;)</emot>
+    <emot path="Indifferent_face.png">:-|</emot>
+    <emot path="Indifferent_face.png">:|</emot>
+    <emot path="Angry_face.png">&gt;:-(</emot>
+    <emot path="Angry_face.png">&gt;:(</emot>
+    <emot path="Squeezed_eyes_laughing.png">xD</emot>
+    <emot path="Squeezed_eyes_laughing.png">XD</emot>
+    <emot path="!.png">(!)</emot>
+  </emoticons>
+</pack>

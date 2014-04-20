@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pack>
+  <name>Purple</name>
+  <emoticons>
+    <emot path=":).png">:-)</emot>
+    <emot path=":).png">:)</emot>
+    <emot path=":O.png">:-O</emot>
+    <emot path=":O.png">:O</emot>
+    <emot path=":O.png">:-o</emot>
+    <emot path=":O.png">:o</emot>
+    <emot path=":S.png">:S</emot>
+    <emot path=":S.png">:s</emot>
+    <emot path=":S.png">:-S</emot>
+    <emot path=":S.png">:-s</emot>
+  </emoticons>
+</pack>

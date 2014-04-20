@@ -16,67 +16,87 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *************************************************************************/
 
-#include "emoticonset.h"
+#include "emoticonpack.h"
 
-EmoticonSet::EmoticonSet(const QString & packName) :
-    mPackName(packName)
+EmoticonPack::EmoticonPack(const QString & id) :
+    mId(id),
+    mEnabled(false)
 {
 }
 
-void EmoticonSet::setName(const QString & name)
+void EmoticonPack::setName(const QString & name)
 {
     mName = name;
 }
 
-void EmoticonSet::setAuthor(const QString & author)
+void EmoticonPack::setAuthor(const QString & author)
 {
     mAuthor = author;
 }
 
-const QList<Emoticon *> & EmoticonSet::list() const
+const QList<Emoticon> & EmoticonPack::list() const
 {
     return mList;
 }
 
-const QList<Emoticon *> & EmoticonSet::sortedList() const
+const QList<Emoticon> & EmoticonPack::sortedList() const
 {
     return mListSorted;
 }
 
-bool EmoticonSet::sortFunc(Emoticon * em1, Emoticon * em2)
+bool EmoticonPack::sortFunc(const Emoticon & em1, const Emoticon & em2)
 {
-    return em1->face().length() > em2->face().length();
+    return em1.face().length() > em2.face().length();
 }
 
-void EmoticonSet::sort()
+void EmoticonPack::sort()
 {
     mListSorted = mList;
     qSort(mListSorted.begin(), mListSorted.end(), sortFunc);
 }
 
-Emoticon * EmoticonSet::operator[](int i)
+void EmoticonPack::append(const Emoticon & emot)
+{
+    mList << emot;
+}
+
+void EmoticonPack::operator<<(const Emoticon & emot)
+{
+    append(emot);
+}
+
+Emoticon & EmoticonPack::operator[](int i)
 {
     return mList[i];
 }
 
-QString EmoticonSet::name() const
+QString EmoticonPack::id() const
+{
+    return mId;
+}
+
+bool EmoticonPack::isEnabled() const
+{
+    return mEnabled;
+}
+
+
+QString EmoticonPack::name() const
 {
     return mName;
 }
 
-QString EmoticonSet::packName() const
-{
-    return mPackName;
-}
-
-QString EmoticonSet::author() const
+QString EmoticonPack::author() const
 {
     return mAuthor;
 }
 
-EmoticonSet::~EmoticonSet()
+EmoticonPack::~EmoticonPack()
 {
-    while (!mList.isEmpty()) {
-        delete mList.takeFirst();
-    }
+    mList.clear();
+}
+
+void EmoticonPack::setEnabled(bool enabled)
+{
+    mEnabled = enabled;
 }

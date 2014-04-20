@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pack>
+  <name>Glossy Emoticons</name>
+  <emoticons>
+    <emot path="Heart.png">&lt;3</emot>
+    <emot path="Heart.png">(heart)</emot>
+    <emot path="Rose.png">(rose)</emot>
+    <emot path="Beer.png">(beer)</emot>
+    <emot path="Star.png">(*)</emot>
+    <emot path="Music.png">(music)</emot>
+    <emot path="Rainbow.png">(rainbow)</emot>
+    <emot path="Soccer_ball.png">(soccer)</emot>
+  </emoticons>
+</pack>

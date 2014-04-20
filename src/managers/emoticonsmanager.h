@@ -16,25 +16,35 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *************************************************************************/
 
-#ifndef EMOTICON_H
-#define EMOTICON_H
+#ifndef EMOTICONSMANAGER_H
+#define EMOTICONSMANAGER_H
 
-#include <QtCore>
+#include <QString>
 
-class Emoticon
+#include "emoticons/emoticon.h"
+#include "emoticons/emoticonpack.h"
+
+class EmoticonsManager
 {
-    private:
-        QString mFace;
-        QString mIcon;
-
     public:
-        Emoticon();
-        Emoticon(const QString &, const QString &);
+        enum LoadState {
+            Success = 1,
+            UnknownFailure = 0,
+            InvalidSchema = -1,
+            SetOpenError = -2,
+            InvalidSet = -3
+        };
 
-        void setFace(const QString &);
-        void setIcon(const QString &);
-        QString face() const;
-        QString icon() const;
+        EmoticonsManager();
+
+        LoadState loadPack(const QString & pack);
+
+        void swapPacks(int i, int j);
+        const QList<EmoticonPack *> & packs() const;
+
+
+    private:
+        QList<EmoticonPack *> mPacks;
 };
 
-#endif // EMOTICON_H
+#endif // EMOTICONSMANAGER_H

@@ -21,7 +21,9 @@
 
 #include <QDialog>
 #include <QTreeWidgetItem>
+
 #include "managers/emoglercore.h"
+#include "models/emoticonstablemodel.h"
 
 namespace Ui {
 class GlobalSettingsDialog;
@@ -48,8 +50,12 @@ class GlobalSettingsDialog : public QDialog
 
         void on_detailsButton_clicked();
 
-protected:
-            void changeEvent(QEvent * e);
+        void on_upButton_clicked();
+
+        void on_downButton_clicked();
+
+    protected:
+        void changeEvent(QEvent * e);
 
     private:
         struct MappedSetting {
@@ -58,10 +64,12 @@ protected:
         };
 
         void mapSetting(QWidget * w, const QString & set, bool user = true);
+        void moveEmoticonPack(int step);
 
         Ui::GlobalSettingsDialog * ui;
         EmoglerCore & core;
         QHash<QWidget *, MappedSetting> mWidgetMap;
+        EmoticonsTableModel * mEmoticonsModel;
         //QHash<QWidget *, QString> mWidgetMap;
 };
 

@@ -16,36 +16,42 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *************************************************************************/
 
-#ifndef EMOTICONSET_H
-#define EMOTICONSET_H
+#ifndef EMOTICONPACK_H
+#define EMOTICONPACK_H
 
 #include "emoticon.h"
 
-class EmoticonSet
+class EmoticonPack
 {
-    private:
-        QString mName;
-        QString mAuthor;
-        QString mPackName;
-        QList<Emoticon *> mList;
-        QList<Emoticon *> mListSorted;
-
     public:
-        EmoticonSet(const QString & packName);
-        ~EmoticonSet();
+        EmoticonPack(const QString & packName);
+        ~EmoticonPack();
 
+        void setEnabled(bool enabled);
         void setName(const QString & name);
         void setAuthor(const QString & author);
 
-        static bool sortFunc(Emoticon *, Emoticon *);
+        static bool sortFunc(const Emoticon &, const Emoticon &);
         void sort();
 
-        Emoticon * operator[](int);
-        const QList<Emoticon *> & list() const;
-        const QList<Emoticon *> & sortedList() const;
+        void append(const Emoticon & emot);
+
+        void operator<<(const Emoticon & emot);
+        Emoticon & operator[](int);
+        const QList<Emoticon> & list() const;
+        const QList<Emoticon> & sortedList() const;
+        QString id() const;
+        bool isEnabled() const;
         QString name() const;
-        QString packName() const;
         QString author() const;
+
+    private:
+        QString mId;
+        bool mEnabled;
+        QString mName;
+        QString mAuthor;
+        QList<Emoticon> mList;
+        QList<Emoticon> mListSorted;
 };
 
-#endif // EMOTICONSET_H
+#endif // EMOTICONPACK_H

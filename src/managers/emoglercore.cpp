@@ -27,7 +27,7 @@ EmoglerCore * EmoglerCore::mInstance = nullptr;
 
 EmoglerCore::EmoglerCore(QObject * parent) :
     QObject(parent),
-    mSettings(QSettings::IniFormat, QSettings::UserScope, "Emogler++", "settings"),
+    mSettings(QSettings::IniFormat, QSettings::UserScope, "Emogler", "settings"),
     mLanguage(mSettings.value("language", QLocale::system().name()).toString())
 {
     setLanguage(mLanguage);
@@ -75,4 +75,9 @@ PluginManager & EmoglerCore::pluginManager()
 ConversationManager & EmoglerCore::conversationManager()
 {
     return mConversationManager;
+}
+
+EmoticonsManager & EmoglerCore::emoticonsManager()
+{
+    return mEmoticonsManager;
 }

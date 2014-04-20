@@ -25,6 +25,7 @@
 
 #include "managers/pluginmanager.h"
 #include "managers/conversationmanager.h"
+#include "managers/emoticonsmanager.h"
 
 class EmoglerCore : public QObject
 {
@@ -42,7 +43,7 @@ class EmoglerCore : public QObject
 
         PluginManager & pluginManager();
         ConversationManager & conversationManager();
-
+        EmoticonsManager & emoticonsManager();
 
 signals:
         void languageChanged(const QString & lng);
@@ -59,7 +60,7 @@ signals:
 
         PluginManager mPluginManager;
         ConversationManager mConversationManager;
-
+        EmoticonsManager mEmoticonsManager;
 };
 
 #endif // EMOGLERCORE_H

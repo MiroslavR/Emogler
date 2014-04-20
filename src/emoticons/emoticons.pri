@@ -1,5 +1,5 @@
 SOURCES += $$PWD/emoticon.cpp \
-    $$PWD/emoticonset.cpp
+    $$PWD/emoticonpack.cpp
 
 HEADERS += $$PWD/emoticon.h \
-    $$PWD/emoticonset.h
+    $$PWD/emoticonpack.h

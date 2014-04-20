@@ -27,14 +27,19 @@
 #include "managers/emoglercore.h"
 #include "gui/plugindetailsdialog.h"
 
+
 GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
     QDialog(parent),
     ui(new Ui::GlobalSettingsDialog),
-    core(EmoglerCore::instance())
+    core(EmoglerCore::instance()),
+    mEmoticonsModel(new EmoticonsTableModel(core.emoticonsManager(), this))
 {
     ui->setupUi(this);
 
     ui->listWidget->setFixedWidth(ui->listWidget->sizeHintForColumn(0) + 20);
+
+    ui->emoticonsView->setModel(mEmoticonsModel);
+    connect(mEmoticonsModel, &EmoticonsTableModel::checkStateChanged, this, &GlobalSettingsDialog::fieldChanged);
 
     QDir dir(":/data/langs");
     QStringList fileNames = dir.entryList(QStringList("emo_*.qm"));
@@ -51,6 +56,7 @@ GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
 
     mapSetting(ui->showSystrayCheckBox, "showSystray", true);
     mapSetting(ui->languageComboBox, "language", false);
+    mapSetting(ui->emoticonsEnabledCheckBox, "emoticons/enabled", true);
     loadSettings();
 
     connect(this, &QDialog::accepted, this, &GlobalSettingsDialog::saveSettings);
@@ -128,7 +134,24 @@ void GlobalSettingsDialog::saveSettings()
 
     core.settings().setValue(mWidgetMap[ui->languageComboBox].set, ui->languageComboBox->currentData().toString());
     core.setLanguage(ui->languageComboBox->currentData().toString());
+
+    mEmoticonsModel->commit();
+
     ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
+
+    QList<EmoticonPack *> packs = core.emoticonsManager().packs();
+    for (int i = 0; i < packs.size(); i++) {
+        core.settings().setValue("packs/" + packs.at(i)->id() + "/enabled", packs.at(i)->isEnabled());
+        core.settings().setValue("packs/" + packs.at(i)->id() + "/priority", i);
+    }
+
+    /*core.settings().beginWriteArray("emoticons/pack");
+    QList<EmoticonPack *> packs = core.emoticonsManager().packs();
+    for (int i = 0; i < packs.size(); i++) {
+        core.settings().setArrayIndex(i);
+        core.settings().setValue("enabled", packs.at(i)->isEnabled());
+    }
+    core.settings().endArray();*/
 }
 
 void GlobalSettingsDialog::loadSettings()
@@ -139,7 +162,7 @@ void GlobalSettingsDialog::loadSettings()
     }
 
     for (int i = 0; i < ui->languageComboBox->count(); i++) {
-        auto setLang = QLocale(core.settings().value(mWidgetMap[ui->languageComboBox].set).toString()).language();
+        auto setLang = QLocale(core.language()); /*QLocale(core.settings().value(mWidgetMap[ui->languageComboBox].set).toString()).language();*/
         auto dataLang = QLocale(ui->languageComboBox->itemData(i).toString()).language();
 
         if (setLang == dataLang) {
@@ -168,4 +191,30 @@ void GlobalSettingsDialog::on_detailsButton_clicked()
         PluginDetailsDialog dlg(this, *pl);
         dlg.exec();
     }
+}
+
+void GlobalSettingsDialog::moveEmoticonPack(int step)
+{
+    // there must be a row that is selected
+    if (!ui->emoticonsView->selectionModel()->selectedRows().size())
+        return;
+
+    // move selected row by step
+    QModelIndex index = ui->emoticonsView->selectionModel()->selectedRows()[0];
+    if (mEmoticonsModel->switchRows(index.row(), index.row() + step)) {
+        ui->emoticonsView->selectionModel()->select(index, QItemSelectionModel::Deselect | QItemSelectionModel::Rows);
+        ui->emoticonsView->selectionModel()->select(mEmoticonsModel->index(index.row() + step, index.column()), QItemSelectionModel::Select | QItemSelectionModel::Rows);
+
+        fieldChanged();
+    }
+}
+
+void GlobalSettingsDialog::on_upButton_clicked()
+{
+    moveEmoticonPack(-1);
+}
+
+void GlobalSettingsDialog::on_downButton_clicked()
+{
+    moveEmoticonPack(1);
 }
