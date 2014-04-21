@@ -23,6 +23,8 @@
 #include <QXmlSchema>
 #include <QXmlSchemaValidator>
 
+#include "managers/conversationmanager.h"
+
 EmoticonsManager::EmoticonsManager()
 {
     loadPack("standard");
@@ -84,4 +86,26 @@ void EmoticonsManager::swapPacks(int i, int j)
 const QList<EmoticonPack *> & EmoticonsManager::packs() const
 {
     return mPacks;
+}
+
+QString EmoticonsManager::emotize(const QString & text)
+{
+    QString ret = "";
+    int last = 0;
+    for (int i = 0; i < text.size(); i++) {
+        for (EmoticonPack * pack : mPacks) {
+            for (const Emoticon & emot : pack->sortedList()) {
+                if (text.mid(i).length() >= emot.face().length()) {
+                    if (text.mid(i, emot.face().length()) == emot.face()) {
+                        ret += ConversationManager::optimize(text.mid(last, i - last));
+                        ret += QString("<img src=\"data/emoticons/%1/%2\" title=\"%3\">").arg(pack->id().toHtmlEscaped()).arg(emot.icon().toHtmlEscaped()).arg(emot.face().toHtmlEscaped());
+                        i += emot.face().length() - 1;
+                        last = i + 1;
+                    }
+                }
+            }
+        }
+    }
+    ret += ConversationManager::optimize(text.mid(last));
+    return ret;
 }

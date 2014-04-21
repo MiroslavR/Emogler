@@ -42,6 +42,8 @@ class EmoticonsManager
         void swapPacks(int i, int j);
         const QList<EmoticonPack *> & packs() const;
 
+        QString emotize(const QString & text);
+
     private:
         QList<EmoticonPack *> mPacks;
 };
