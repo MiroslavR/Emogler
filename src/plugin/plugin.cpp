@@ -65,7 +65,7 @@ QString Plugin::description(const QLocale & loc) const
     return mDescription[loc];
 }
 
-QPluginLoader * const Plugin::loader() const
+QPluginLoader * Plugin::loader() const
 {
     return mLoader;
 }

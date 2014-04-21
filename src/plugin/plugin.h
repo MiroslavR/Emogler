@@ -42,7 +42,7 @@ class Plugin
         QString version() const;
         QString description(const QLocale & loc) const;
         const QStringList & dependencies() const;
-        QPluginLoader * const loader() const;
+        QPluginLoader * loader() const;
         bool isLoaded() const;
 
         bool hasAuthor();
