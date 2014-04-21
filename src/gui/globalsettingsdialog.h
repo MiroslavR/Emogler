@@ -24,12 +24,13 @@
 
 #include "managers/emoglercore.h"
 #include "models/emoticonstablemodel.h"
+#include "basewidgetsettings.h"
 
 namespace Ui {
 class GlobalSettingsDialog;
 }
 
-class GlobalSettingsDialog : public QDialog
+class GlobalSettingsDialog : public QDialog, public BaseWidgetSettings
 {
     Q_OBJECT
 
@@ -37,12 +38,14 @@ class GlobalSettingsDialog : public QDialog
         explicit GlobalSettingsDialog(QWidget * parent = 0);
         ~GlobalSettingsDialog();
 
+    protected slots:
+        virtual void saveSettings() override;
+        virtual void loadSettings() override;
+        virtual void fieldChanged() override;
+
     private slots:
         /*void mapSetting(QWidget * w, const QString & set, const QString & prop = QString::null);
         void commit();*/
-        void saveSettings();
-        void loadSettings();
-        void fieldChanged();
 
         void populatePluginTree();
 
@@ -58,17 +61,11 @@ class GlobalSettingsDialog : public QDialog
         void changeEvent(QEvent * e);
 
     private:
-        struct MappedSetting {
-            QString set;
-            bool user;
-        };
-
-        void mapSetting(QWidget * w, const QString & set, bool user = true);
         void moveEmoticonPack(int step);
 
         Ui::GlobalSettingsDialog * ui;
         EmoglerCore & core;
-        QHash<QWidget *, MappedSetting> mWidgetMap;
+
         EmoticonsTableModel * mEmoticonsModel;
         //QHash<QWidget *, QString> mWidgetMap;
 };

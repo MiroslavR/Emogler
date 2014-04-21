@@ -30,6 +30,7 @@
 
 GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
     QDialog(parent),
+    BaseWidgetSettings(EmoglerCore::instance().settings(), this),
     ui(new Ui::GlobalSettingsDialog),
     core(EmoglerCore::instance()),
     mEmoticonsModel(new EmoticonsTableModel(core.emoticonsManager(), this))
@@ -63,13 +64,6 @@ GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
     connect(ui->buttonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &GlobalSettingsDialog::saveSettings);
 
     ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
-}
-
-void GlobalSettingsDialog::mapSetting(QWidget * w, const QString & set, bool user)
-{
-    mWidgetMap[w] = {set, user};
-    w->setProperty(w->metaObject()->userProperty().name(), core.settings().value(mWidgetMap[w].set));
-    connect(w, w->metaObject()->userProperty().notifySignal(), this, metaObject()->method(metaObject()->indexOfSlot("fieldChanged()")));
 }
 
 void GlobalSettingsDialog::fieldChanged()
@@ -127,10 +121,7 @@ void GlobalSettingsDialog::changeEvent(QEvent * e)
 
 void GlobalSettingsDialog::saveSettings()
 {
-    foreach (QWidget * w, mWidgetMap.keys()) {
-        if (mWidgetMap[w].user)
-            core.settings().setValue(mWidgetMap[w].set, w->property(w->metaObject()->userProperty().name()));
-    }
+    BaseWidgetSettings::saveSettings();
 
     core.settings().setValue(mWidgetMap[ui->languageComboBox].set, ui->languageComboBox->currentData().toString());
     core.setLanguage(ui->languageComboBox->currentData().toString());
@@ -156,10 +147,7 @@ void GlobalSettingsDialog::saveSettings()
 
 void GlobalSettingsDialog::loadSettings()
 {
-    foreach (QWidget * w, mWidgetMap.keys()) {
-        if (mWidgetMap[w].user)
-            w->setProperty(w->metaObject()->userProperty().name(), core.settings().value(mWidgetMap[w].set));
-    }
+    BaseWidgetSettings::loadSettings();
 
     for (int i = 0; i < ui->languageComboBox->count(); i++) {
         auto setLang = QLocale(core.language()); /*QLocale(core.settings().value(mWidgetMap[ui->languageComboBox].set).toString()).language();*/
