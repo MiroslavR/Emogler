@@ -12,7 +12,7 @@ void EmoticonsTableModel::init()
     mRows.clear();
 
     for (int i = 0; i < mMan.packs().size(); i++) {
-        EmoticonPack * pack = mMan.packs().at(i);
+        const EmoticonPack * pack = mMan.packs().at(i);
         mRows << Row{i, pack->isEnabled()};
 
         emit dataChanged(index(i, 0), index(i, columnCount()));
@@ -49,7 +49,7 @@ QVariant EmoticonsTableModel::headerData(int section, Qt::Orientation orientatio
 QVariant EmoticonsTableModel::data(const QModelIndex & index, int role) const
 {
     if (role == Qt::DisplayRole) {
-        EmoticonPack * pack = mMan.packs().at(mRows[index.row()].origIndex);
+        const EmoticonPack * pack = mMan.packs().at(mRows[index.row()].origIndex);
         switch (index.column()) {
             case 0:
                 return pack->name();
@@ -109,7 +109,7 @@ Qt::ItemFlags EmoticonsTableModel::flags(const QModelIndex & index) const
 void EmoticonsTableModel::commit()
 {
     for (int i = 0; i < mRows.size(); i++) {
-        Row & row = mRows[i];
+        const Row & row = mRows[i];
         mMan.packs().at(row.origIndex)->setPriority(mRows.size() - i);
         mMan.packs().at(row.origIndex)->setEnabled(row.enabled);
     }
