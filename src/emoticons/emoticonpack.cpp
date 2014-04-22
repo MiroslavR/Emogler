@@ -20,7 +20,8 @@
 
 EmoticonPack::EmoticonPack(const QString & id) :
     mId(id),
-    mEnabled(false)
+    mEnabled(false),
+    mPriority(-1)
 {
 }
 
@@ -32,6 +33,11 @@ void EmoticonPack::setName(const QString & name)
 void EmoticonPack::setAuthor(const QString & author)
 {
     mAuthor = author;
+}
+
+void EmoticonPack::setPriority(int pr)
+{
+    mPriority = pr;
 }
 
 const QList<Emoticon> & EmoticonPack::list() const
@@ -89,6 +95,11 @@ QString EmoticonPack::name() const
 QString EmoticonPack::author() const
 {
     return mAuthor;
+}
+
+int EmoticonPack::priority() const
+{
+    return mPriority;
 }
 
 EmoticonPack::~EmoticonPack()

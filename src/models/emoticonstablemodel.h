@@ -28,11 +28,20 @@ class EmoticonsTableModel : public QAbstractTableModel
     public slots:
 
     private:
+        struct Row {
+            int origIndex;
+            bool enabled;
+        };
+
         void init();
 
         EmoticonsManager & mMan;
-        QMap<int, int> mRowChanges;
-        QList<bool> mRowsEnabled;
+        QList<Row> mRows;
 };
+
+/*inline QDebug operator<<(QDebug debug, const EmoticonsTableModel::Row row)
+{
+    return debug.nospace() << "EmoticonsTableModel::Row(" << row.origIndex << ", " << row.enabled << ')';
+}*/
 
 #endif // EMOTICONSTABLEMODEL_H

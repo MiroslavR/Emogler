@@ -57,7 +57,7 @@ GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
 
     mapSetting(ui->showSystrayCheckBox, "showSystray", true);
     mapSetting(ui->languageComboBox, "language", false);
-    mapSetting(ui->emoticonsEnabledCheckBox, "emoticons/enabled", true);
+    mapSetting(ui->emoticonsEnabledCheckBox, "Conversation/enableEmoticons", true);
     loadSettings();
 
     connect(this, &QDialog::accepted, this, &GlobalSettingsDialog::saveSettings);
@@ -130,11 +130,7 @@ void GlobalSettingsDialog::saveSettings()
 
     ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
 
-    QList<EmoticonPack *> packs = core.emoticonsManager().packs();
-    for (int i = 0; i < packs.size(); i++) {
-        core.settings().setValue("packs/" + packs.at(i)->id() + "/enabled", packs.at(i)->isEnabled());
-        core.settings().setValue("packs/" + packs.at(i)->id() + "/priority", i);
-    }
+    core.emoticonsManager().saveSettings(core.settings());
 
     /*core.settings().beginWriteArray("emoticons/pack");
     QList<EmoticonPack *> packs = core.emoticonsManager().packs();

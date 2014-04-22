@@ -35,17 +35,22 @@ class EmoticonsManager
             InvalidSet = -3
         };
 
-        EmoticonsManager();
+        EmoticonsManager(QSettings & s);
 
-        LoadState loadPack(const QString & pack);
+        LoadState loadPack(const QString & packName);
+        void loadAllPacks(const QDir & d);
+
+        void saveSettings(QSettings & s);
 
         void swapPacks(int i, int j);
         const QList<EmoticonPack *> & packs() const;
 
         QString emotize(const QString & text);
 
-    private:
+        void sortPacksByPriority();
+private:
         QList<EmoticonPack *> mPacks;
+        QSettings & mSettings;
 };
 
 #endif // EMOTICONSMANAGER_H

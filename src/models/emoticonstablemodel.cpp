@@ -9,13 +9,11 @@ EmoticonsTableModel::EmoticonsTableModel(EmoticonsManager & eman, QObject * pare
 
 void EmoticonsTableModel::init()
 {
-    mRowChanges.clear();
-    mRowsEnabled.clear();
+    mRows.clear();
 
     for (int i = 0; i < mMan.packs().size(); i++) {
         EmoticonPack * pack = mMan.packs().at(i);
-        mRowsEnabled << pack->isEnabled();
-        mRowChanges[i] = i;
+        mRows << Row{i, pack->isEnabled()};
 
         emit dataChanged(index(i, 0), index(i, columnCount()));
     }
@@ -51,7 +49,7 @@ QVariant EmoticonsTableModel::headerData(int section, Qt::Orientation orientatio
 QVariant EmoticonsTableModel::data(const QModelIndex & index, int role) const
 {
     if (role == Qt::DisplayRole) {
-        EmoticonPack * pack = mMan.packs().at(mRowChanges[index.row()]);
+        EmoticonPack * pack = mMan.packs().at(mRows[index.row()].origIndex);
         switch (index.column()) {
             case 0:
                 return pack->name();
@@ -60,7 +58,7 @@ QVariant EmoticonsTableModel::data(const QModelIndex & index, int role) const
         }
     } else if (role == Qt::CheckStateRole) {
         if (index.column() == 1) {
-            if (mRowsEnabled[index.row()]) {
+            if (mRows[index.row()].enabled) {
                 return Qt::Checked;
             } else {
                 return Qt::Unchecked;
@@ -74,9 +72,10 @@ bool EmoticonsTableModel::setData(const QModelIndex & index, const QVariant & va
 {
     if (role == Qt::CheckStateRole) {
         Qt::CheckState state = static_cast<Qt::CheckState>(value.toInt());
-        mRowsEnabled[mRowChanges[index.row()]] = (state == Qt::Checked);
+        mRows[index.row()].enabled = (state == Qt::Checked);
 
         emit checkStateChanged(index.row(), state);
+        emit dataChanged(index, index, QVector<int>() << Qt::CheckStateRole);
     }
     return true;
 }
@@ -90,8 +89,7 @@ int EmoticonsTableModel::switchRows(int srcRow, int destRow)
     if (srcRow == destRow)
         return true;
 
-    qSwap(mRowChanges[srcRow], mRowChanges[destRow]);
-    qSwap(mRowsEnabled[srcRow], mRowsEnabled[destRow]);
+    std::swap(mRows[srcRow], mRows[destRow]);
 
     emit dataChanged(index(srcRow, 0), index(srcRow, columnCount()));
     emit dataChanged(index(destRow, 0), index(destRow, columnCount()));
@@ -110,19 +108,13 @@ Qt::ItemFlags EmoticonsTableModel::flags(const QModelIndex & index) const
 
 void EmoticonsTableModel::commit()
 {
-    QSet<int> usedTos;
-    for (int from : mRowChanges.keys()) {
-        if (usedTos.contains(from))
-            continue;
-
-        int to = mRowChanges[from];
-        mMan.swapPacks(from, to);
-        usedTos << to;
+    for (int i = 0; i < mRows.size(); i++) {
+        Row & row = mRows[i];
+        mMan.packs().at(row.origIndex)->setPriority(mRows.size() - i);
+        mMan.packs().at(row.origIndex)->setEnabled(row.enabled);
     }
 
-    for (int i = 0; i < mRowsEnabled.size(); i++) {
-        mMan.packs().at(i)->setEnabled(mRowsEnabled[i]);
-    }
+    mMan.sortPacksByPriority();
 
     init();
 }

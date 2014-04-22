@@ -28,7 +28,8 @@ EmoglerCore * EmoglerCore::mInstance = nullptr;
 EmoglerCore::EmoglerCore(QObject * parent) :
     QObject(parent),
     mSettings(QSettings::IniFormat, QSettings::UserScope, "Emogler", "settings"),
-    mLanguage(mSettings.value("language", QLocale::system().name()).toString())
+    mLanguage(mSettings.value("language", QLocale::system().name()).toString()),
+    mEmoticonsManager(mSettings)
 {
     setLanguage(mLanguage);
     //qDebug() << "hmm" << QLocale("zh").name() << QLocale("zh_TW").name() << QLocale("zh_CN").name();

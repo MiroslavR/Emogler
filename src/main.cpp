@@ -17,6 +17,7 @@
 *************************************************************************/
 
 #include "gui/emoglerwindow.h"
+
 #include <QApplication>
 #include <QLocale>
 

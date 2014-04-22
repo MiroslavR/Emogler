@@ -30,6 +30,7 @@ class EmoticonPack
         void setEnabled(bool enabled);
         void setName(const QString & name);
         void setAuthor(const QString & author);
+        void setPriority(int pr);
 
         static bool sortFunc(const Emoticon &, const Emoticon &);
         void sort();
@@ -44,12 +45,14 @@ class EmoticonPack
         bool isEnabled() const;
         QString name() const;
         QString author() const;
+        int priority() const;
 
     private:
         QString mId;
         bool mEnabled;
         QString mName;
         QString mAuthor;
+        int mPriority;
         QList<Emoticon> mList;
         QList<Emoticon> mListSorted;
 };

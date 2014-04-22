@@ -22,16 +22,22 @@
 #include <QFile>
 #include <QXmlSchema>
 #include <QXmlSchemaValidator>
+#include <algorithm>
 
 #include "managers/conversationmanager.h"
 
-EmoticonsManager::EmoticonsManager()
+EmoticonsManager::EmoticonsManager(QSettings & s)
+    : mSettings(s)
 {
-    loadPack("standard");
-    loadPack("pixelized");
+    /*loadPack("standard");
+    loadPack("pixelized");*/
+
+    QDir currentDir = QDir::currentPath();
+    currentDir.cd("data/emoticons");
+    loadAllPacks(currentDir);
 }
 
-EmoticonsManager::LoadState EmoticonsManager::loadPack(const QString & pack)
+EmoticonsManager::LoadState EmoticonsManager::loadPack(const QString & packName)
 {
     QUrl schemaUrl("qrc:///data/emoticons/pack.xsd");
 
@@ -42,9 +48,9 @@ EmoticonsManager::LoadState EmoticonsManager::loadPack(const QString & pack)
         return InvalidSchema;
     }
 
-    QFile file("./data/emoticons/" + pack + "/pack.xml");
+    QFile file("./data/emoticons/" + packName + "/pack.xml");
     if (!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "Could not read emoticon pack" << pack;
+        qDebug() << "Could not read emoticon pack" << packName;
         return SetOpenError;
     }
 
@@ -60,27 +66,81 @@ EmoticonsManager::LoadState EmoticonsManager::loadPack(const QString & pack)
     doc.setContent(&file);
     QDomElement root = doc.documentElement();
 
-    EmoticonPack * set = new EmoticonPack(pack);
+    EmoticonPack * pack = new EmoticonPack(packName);
+
+    if (mSettings.childGroups().contains("Packs")) {
+        mSettings.beginGroup("Packs");
+        if (mSettings.childGroups().contains(packName)) {
+            mSettings.beginGroup(packName);
+            if (mSettings.contains("enabled"))
+                pack->setEnabled(mSettings.value("enabled", false).toBool());
+
+            int priority = mSettings.value("priority", -1).toInt();
+            pack->setPriority(priority);
+
+            mSettings.endGroup();
+        }
+        mSettings.endGroup();
+    }
+
     if (root.tagName() == "pack") {
         QDomElement name = root.firstChildElement("name");
-        set->setName(name.text());
+        pack->setName(name.text());
 
         QDomElement entries = root.firstChildElement("emoticons");
         for (QDomNode sm = entries.firstChild(); !sm.isNull(); sm = sm.nextSibling()) {
-            (*set) << Emoticon(sm.toElement().text(), sm.toElement().attribute("path", ""));
+            (*pack) << Emoticon(sm.toElement().text(), sm.toElement().attribute("path", ""));
         }
     }
 
-    set->sort();
-    mPacks << set;
+    pack->sort();
+    mPacks << pack;
 
     file.close();
     return Success;
 }
 
+void EmoticonsManager::loadAllPacks(const QDir & d)
+{
+    QDir dir = d;
+    dir.setFilter(QDir::Dirs | QDir::NoDotAndDotDot | QDir::Readable);
+
+    QStringList entries = dir.entryList();
+
+    if (entries.contains("standard")) {
+        // make sure the 'standard' pack is placed first
+        int standard_index = entries.indexOf("standard");
+        if (standard_index != 0) {
+            entries.swap(0, standard_index);
+        }
+    }
+
+    for (const QString & entry : entries) {
+        loadPack(entry);
+    }
+    sortPacksByPriority();
+}
+
+void EmoticonsManager::saveSettings(QSettings &s)
+{
+    for (int i = 0; i < mPacks.size(); i++) {
+        s.beginGroup("Packs/" + mPacks.at(i)->id());
+        s.setValue("enabled", mPacks.at(i)->isEnabled());
+        s.setValue("priority", mPacks.at(i)->priority()/*mPacks.size() - i*/);
+        s.endGroup();
+    }
+}
+
 void EmoticonsManager::swapPacks(int i, int j)
 {
     mPacks.swap(i, j);
+}
+
+void EmoticonsManager::sortPacksByPriority()
+{
+    std::sort(mPacks.begin(), mPacks.end(), [](EmoticonPack * a, EmoticonPack * b) -> bool {
+        return a->priority() > b->priority();
+    });
 }
 
 const QList<EmoticonPack *> & EmoticonsManager::packs() const
