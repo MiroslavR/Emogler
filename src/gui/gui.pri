@@ -4,7 +4,8 @@ SOURCES  += $$PWD/emoglerwindow.cpp \
     $$PWD/globalsettingsdialog.cpp \
     $$PWD/verticalscrollarea.cpp \
     $$PWD/plugindetailsdialog.cpp \
-    src/gui/basewidgetsettings.cpp
+    src/gui/basewidgetsettings.cpp \
+    src/gui/emoticonsmenu.cpp
 
 HEADERS  += $$PWD/emoglerwindow.h \
     $$PWD/conversationwidget.h \
@@ -12,7 +13,8 @@ HEADERS  += $$PWD/emoglerwindow.h \
     $$PWD/globalsettingsdialog.h \
     $$PWD/verticalscrollarea.h \
     $$PWD/plugindetailsdialog.h \
-    src/gui/basewidgetsettings.h
+    src/gui/basewidgetsettings.h \
+    src/gui/emoticonsmenu.h
 
 FORMS    += $$PWD/emoglerwindow.ui \
     $$PWD/conversationwidget.ui \

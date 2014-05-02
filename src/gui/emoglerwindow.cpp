@@ -17,6 +17,7 @@
 *************************************************************************/
 
 #include "emoglerwindow.h"
+#include "emoticonsmenu.h"
 #include "ui_emoglerwindow.h"
 
 #include "conversationwidget.h"

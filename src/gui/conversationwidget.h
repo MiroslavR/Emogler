@@ -33,8 +33,11 @@ class ConversationWidget : public QWidget
         explicit ConversationWidget(QWidget * parent = 0);
         ~ConversationWidget();
 
+    private slots:
+        void on_emoticonsButton_clicked();
+
     private:
-        Ui::ConversationWidget * ui;
+            Ui::ConversationWidget * ui;
 };
 
 #endif // CONVERSATIONWIDGET_H

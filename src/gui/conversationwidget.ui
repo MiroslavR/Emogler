@@ -61,6 +61,10 @@
        <property name="text">
         <string notr="true"/>
        </property>
+       <property name="icon">
+        <iconset resource="../../icons.qrc">
+         <normaloff>:/data/gui/emoticons.png</normaloff>:/data/gui/emoticons.png</iconset>
+       </property>
        <property name="checkable">
         <bool>false</bool>
        </property>
@@ -173,6 +177,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

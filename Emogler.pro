@@ -8,7 +8,7 @@ QT       += core gui xml xmlpatterns
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Emogler++
+TARGET = Emogler
 TEMPLATE = app
 
 CONFIG += c++11

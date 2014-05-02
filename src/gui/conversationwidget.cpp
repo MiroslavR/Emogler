@@ -20,6 +20,8 @@
 #include "ui_conversationwidget.h"
 
 #include "conversationtabwidget.h"
+#include "emoticonsmenu.h"
+#include "managers/emoglercore.h"
 
 ConversationWidget::ConversationWidget(QWidget * parent) :
     QWidget(parent),
@@ -37,4 +39,25 @@ ConversationWidget::ConversationWidget(QWidget * parent) :
 ConversationWidget::~ConversationWidget()
 {
     delete ui;
+}
+
+void ConversationWidget::on_emoticonsButton_clicked()
+{
+    EmoticonsMenu * emenu = new EmoticonsMenu(ui->emoticonsButton);
+    EmoticonsManager & eman = EmoglerCore::instance().emoticonsManager();
+    const QSettings & s = EmoglerCore::instance().settings();
+    QList<QAction *> emoActions;
+    for (const EmoticonPack * pack : eman.packs()) {
+        if (!pack->isEnabled())
+            continue;
+
+        for (const Emoticon emot : pack->list()) {
+            QAction * item = new QAction(emenu);
+            item->setIcon(QIcon(QString("data/emoticons/%1/%2").arg(pack->id()).arg(emot.icon())));
+            item->setToolTip(emot.face());
+            emoActions << item;
+        }
+    }
+    emenu->addItems(emoActions);
+    emenu->show();
 }
