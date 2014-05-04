@@ -42,6 +42,10 @@ QString Plugin::id() const
 QString Plugin::name(const QLocale & loc) const
 {
     if (!mName.contains(loc)) {
+        QLocale def("en_US");
+        if (mName.contains(def)) {
+            return mName[def];
+        }
         return QString();
     }
     return mName[loc];
@@ -60,6 +64,10 @@ QString Plugin::version() const
 QString Plugin::description(const QLocale & loc) const
 {
     if (!mDescription.contains(loc)) {
+        QLocale def("en_US");
+        if (mDescription.contains(def)) {
+            return mDescription[def];
+        }
         return QString();
     }
     return mDescription[loc];
@@ -87,7 +95,7 @@ bool Plugin::hasVersion()
 
 bool Plugin::hasDescription(const QLocale & loc)
 {
-    return (mDescription.contains(loc));
+    return (mDescription.contains(loc) || mDescription.contains(QLocale("en_US")));
 }
 
 bool Plugin::hasDependencies()
