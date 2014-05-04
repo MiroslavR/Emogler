@@ -1,0 +1,8 @@
+{
+    "category": "protocol",
+    "name": "Omegle",
+    "description": "Omegle service",
+    "version": "0.0.1",
+    "author": "Miroslav Remák",
+    "dependencies": []
+}

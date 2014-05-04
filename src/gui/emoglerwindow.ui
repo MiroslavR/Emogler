@@ -27,6 +27,10 @@
    <addaction name="actionSettings"/>
   </widget>
   <action name="actionSettings">
+   <property name="icon">
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/data/gui/options.png</normaloff>:/data/gui/options.png</iconset>
+   </property>
    <property name="text">
     <string>Se&amp;ttings</string>
    </property>
@@ -36,6 +40,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

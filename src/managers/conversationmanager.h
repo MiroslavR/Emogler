@@ -20,13 +20,19 @@
 #define CONVERSATIONMANAGER_H
 
 #include <QObject>
+#include <QSettings>
+
+#include "conversation/conversation.h"
 
 class ConversationManager : public QObject
 {
     Q_OBJECT
 
     public:
-        explicit ConversationManager(QObject * parent = 0);
+        explicit ConversationManager(QSettings & s, QObject * parent = 0);
+
+        const QList<Conversation *> conversations() const;
+        Conversation * newConversation(const QString & prId);
 
         static QString optimize(const QString & text);
 
@@ -34,7 +40,9 @@ class ConversationManager : public QObject
 
     public slots:
 
-
+    private:
+        QSettings & mSettings;
+        QList<Conversation *> mConversations;
 };
 
 #endif // CONVERSATIONMANAGER_H

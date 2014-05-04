@@ -1,1 +1,2 @@
-HEADERS += $$PWD/extensioninterface.h
+HEADERS += $$PWD/extensioninterface.h \
+    src/interfaces/protocolinterface.h

@@ -18,9 +18,29 @@
 
 #include "conversationmanager.h"
 
-ConversationManager::ConversationManager(QObject *parent) :
-    QObject(parent)
+#include "managers/emoglercore.h"
+
+ConversationManager::ConversationManager(QSettings & s, QObject * parent) :
+    QObject(parent),
+    mSettings(s)
 {
+}
+
+const QList<Conversation *> ConversationManager::conversations() const
+{
+    return mConversations;
+}
+
+Conversation * ConversationManager::newConversation(const QString & prId)
+{
+    PluginManager & pman = EmoglerCore::instance().pluginManager();
+    if (pman.plugins().contains(prId)) {
+        Plugin * pl = pman.plugins()[prId];
+        if (pl->category() == Plugin::Protocol) {
+            //return new Conversation(static_cast<Protocol *>(pl));
+        }
+    }
+    return nullptr;
 }
 
 QString ConversationManager::optimize(const QString & text)

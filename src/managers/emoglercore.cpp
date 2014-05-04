@@ -29,6 +29,7 @@ EmoglerCore::EmoglerCore(QObject * parent) :
     QObject(parent),
     mSettings(QSettings::IniFormat, QSettings::UserScope, "Emogler", "settings"),
     mLanguage(mSettings.value("language", QLocale::system().name()).toString()),
+    mConversationManager(mSettings),
     mEmoticonsManager(mSettings)
 {
     setLanguage(mLanguage);

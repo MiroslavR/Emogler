@@ -19,10 +19,12 @@
 #ifndef CONVERSATION_H
 #define CONVERSATION_H
 
-#include <QString>
+#include <QObject>
 
-class Conversation
+class Conversation : public QObject
 {
+    Q_OBJECT
+
     public:
         Conversation();
 };

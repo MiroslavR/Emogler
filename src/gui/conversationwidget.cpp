@@ -19,6 +19,7 @@
 #include "conversationwidget.h"
 #include "ui_conversationwidget.h"
 
+#include "plusbutton.h"
 #include "conversationtabwidget.h"
 #include "emoticonsmenu.h"
 #include "managers/emoglercore.h"
@@ -28,6 +29,8 @@ ConversationWidget::ConversationWidget(QWidget * parent) :
     ui(new Ui::ConversationWidget)
 {
     ui->setupUi(this);
+
+    ui->conversationTabWidget->setCornerWidget(new PlusButton(this));
 
     QWidget * wTab = new ConversationTabWidget(this);
     ui->conversationTabWidget->addTab(wTab, "Test");
@@ -39,6 +42,11 @@ ConversationWidget::ConversationWidget(QWidget * parent) :
 ConversationWidget::~ConversationWidget()
 {
     delete ui;
+}
+
+void ConversationWidget::addTab(const QString & prId)
+{
+
 }
 
 void ConversationWidget::on_emoticonsButton_clicked()

@@ -16,30 +16,21 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *************************************************************************/
 
-#ifndef CONVERSATIONWIDGET_H
-#define CONVERSATIONWIDGET_H
+#ifndef PLUSBUTTON_H
+#define PLUSBUTTON_H
 
-#include <QWidget>
+#include <QHelpEvent>
+#include <QToolButton>
 
-namespace Ui {
-class ConversationWidget;
-}
-
-class ConversationWidget : public QWidget
+class PlusButton : public QToolButton
 {
     Q_OBJECT
 
     public:
-        explicit ConversationWidget(QWidget * parent = 0);
-        ~ConversationWidget();
+        explicit PlusButton(QWidget * parent = 0);
 
-        void addTab(const QString & prId);
-
-    private slots:
-        void on_emoticonsButton_clicked();
-
-    private:
-        Ui::ConversationWidget * ui;
+    protected:
+        virtual void contextMenuEvent(QContextMenuEvent * e) override;
 };
 
-#endif // CONVERSATIONWIDGET_H
+#endif // PLUSBUTTON_H

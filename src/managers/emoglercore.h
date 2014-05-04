@@ -27,6 +27,8 @@
 #include "managers/conversationmanager.h"
 #include "managers/emoticonsmanager.h"
 
+#include "conversation/conversation.h"
+
 class EmoglerCore : public QObject
 {
     Q_OBJECT

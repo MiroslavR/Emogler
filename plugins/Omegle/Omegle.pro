@@ -1,19 +1,21 @@
+QT       += network
+
 QT       -= gui
 
-TARGET = ListeningTo
+TARGET = Omegle
 TEMPLATE = lib
 
-DEFINES += LISTENINGTO_LIBRARY
+DEFINES += OMEGLE_LIBRARY
 
 INCLUDEPATH += src/
 INCLUDEPATH += ../../src/interfaces
 
 CONFIG += plugin no_plugin_name_prefix
 
-SOURCES += src/listeningto.cpp
+SOURCES += src/omegle.cpp
 
-HEADERS += src/listeningto.h\
-        src/listeningto_global.h
+HEADERS += src/omegle.h\
+        src/omegle_global.h
 
 unix {
     target.path = ../

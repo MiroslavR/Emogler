@@ -16,30 +16,18 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 *************************************************************************/
 
-#ifndef CONVERSATIONWIDGET_H
-#define CONVERSATIONWIDGET_H
+#ifndef PROTOCOLINTERFACE_H
+#define PROTOCOLINTERFACE_H
 
-#include <QWidget>
+#include <QtPlugin>
 
-namespace Ui {
-class ConversationWidget;
-}
-
-class ConversationWidget : public QWidget
+class ProtocolInterface
 {
-    Q_OBJECT
-
     public:
-        explicit ConversationWidget(QWidget * parent = 0);
-        ~ConversationWidget();
-
-        void addTab(const QString & prId);
-
-    private slots:
-        void on_emoticonsButton_clicked();
-
-    private:
-        Ui::ConversationWidget * ui;
+        virtual ~ProtocolInterface() {}
+    // TODO: factory
 };
 
-#endif // CONVERSATIONWIDGET_H
+Q_DECLARE_INTERFACE(ProtocolInterface, "emogler.protocol")
+
+#endif // PROTOCOLINTERFACE_H

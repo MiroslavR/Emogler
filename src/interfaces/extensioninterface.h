@@ -25,8 +25,6 @@ class ExtensionInterface
 {
     public:
         virtual ~ExtensionInterface() {}
-
-    //virtual
 };
 
 Q_DECLARE_INTERFACE(ExtensionInterface, "emogler.extension")

@@ -42,14 +42,14 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>40</width>
+         <height>40</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>40</width>
+         <height>40</height>
         </size>
        </property>
        <property name="toolTip">
@@ -80,14 +80,14 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>40</width>
+         <height>40</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>40</width>
+         <height>40</height>
         </size>
        </property>
        <property name="toolTip">
@@ -125,17 +125,27 @@
        <property name="minimumSize">
         <size>
          <width>32</width>
-         <height>32</height>
+         <height>40</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>32</height>
+         <height>40</height>
         </size>
        </property>
        <property name="text">
         <string notr="true">New</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../icons.qrc">
+         <normaloff>:/data/gui/new.png</normaloff>:/data/gui/new.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
        </property>
        <property name="checkable">
         <bool>false</bool>
@@ -153,13 +163,13 @@
        <property name="minimumSize">
         <size>
          <width>32</width>
-         <height>32</height>
+         <height>40</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
          <width>16777215</width>
-         <height>32</height>
+         <height>40</height>
         </size>
        </property>
        <property name="whatsThis">
@@ -167,6 +177,16 @@
        </property>
        <property name="text">
         <string notr="true">Disconnect</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../icons.qrc">
+         <normaloff>:/data/gui/disconnect.png</normaloff>:/data/gui/disconnect.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>24</width>
+         <height>24</height>
+        </size>
        </property>
        <property name="checkable">
         <bool>false</bool>
