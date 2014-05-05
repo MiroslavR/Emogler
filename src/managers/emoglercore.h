@@ -41,7 +41,9 @@ class EmoglerCore : public QObject
         QSettings & settings();
 
         QString language() const;
+        bool isSystemLanguage();
         void setLanguage(const QString & lng);
+        void setSystemLanguage(bool sys);
 
         //void setCurrentProtocol
 
@@ -61,6 +63,7 @@ class EmoglerCore : public QObject
         QTranslator mTranslator;
         QTranslator mTranslatorQt;
         QString mLanguage;
+        bool mSystemLanguage;
 
         PluginManager mPluginManager;
         ConversationManager mConversationManager;

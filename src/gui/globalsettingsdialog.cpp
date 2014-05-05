@@ -41,6 +41,8 @@ GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
     ui->emoticonsView->setModel(mEmoticonsModel);
     connect(mEmoticonsModel, &EmoticonsTableModel::checkStateChanged, this, &GlobalSettingsDialog::fieldChanged);
 
+    ui->languageComboBox->addItem(tr("System language"));
+
     QDir dir(":/data/langs");
     QStringList fileNames = dir.entryList(QStringList("emo_*.qm"));
     for (QString locale : fileNames) {
@@ -57,6 +59,7 @@ GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
     mapSetting(ui->emoticonsEnabledCheckBox, "Conversation/enableEmoticons", true);
     loadSettings();
 
+    connect(ui->languageComboBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, &GlobalSettingsDialog::fieldChanged);
     connect(this, &QDialog::accepted, this, &GlobalSettingsDialog::saveSettings);
     connect(ui->buttonBox->button(QDialogButtonBox::Apply), &QPushButton::clicked, this, &GlobalSettingsDialog::saveSettings);
 
@@ -74,6 +77,7 @@ void GlobalSettingsDialog::changeEvent(QEvent * e)
     switch (e->type()) {
         case QEvent::LanguageChange:
             ui->retranslateUi(this);
+            ui->languageComboBox->setItemText(0, tr("System language"));
             break;
         default:
             break;
@@ -84,14 +88,20 @@ void GlobalSettingsDialog::saveSettings()
 {
     BaseWidgetSettings::saveSettings();
 
-    core.settings().setValue(mWidgetMap[ui->languageComboBox].set, ui->languageComboBox->currentData().toString());
-    core.setLanguage(ui->languageComboBox->currentData().toString());
-
     mEmoticonsModel->commit();
 
     ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(false);
 
     core.emoticonsManager().saveSettings(core.settings());
+
+    if (ui->languageComboBox->currentIndex() == 0) { // system language
+        core.settings().setValue(mWidgetMap[ui->languageComboBox].set, "system");
+        core.setSystemLanguage(true);
+    } else {
+        core.settings().setValue(mWidgetMap[ui->languageComboBox].set, ui->languageComboBox->currentData().toString());
+        core.setLanguage(ui->languageComboBox->currentData().toString());
+        core.setSystemLanguage(false);
+    }
 
     /*core.settings().beginWriteArray("emoticons/pack");
     QList<EmoticonPack *> packs = core.emoticonsManager().packs();
@@ -106,7 +116,12 @@ void GlobalSettingsDialog::loadSettings()
 {
     BaseWidgetSettings::loadSettings();
 
-    for (int i = 0; i < ui->languageComboBox->count(); i++) {
+    if (core.isSystemLanguage()) {
+        ui->languageComboBox->setCurrentIndex(0);
+        return;
+    }
+
+    for (int i = 1; i < ui->languageComboBox->count(); i++) {
         auto setLang = QLocale(core.language()); /*QLocale(core.settings().value(mWidgetMap[ui->languageComboBox].set).toString()).language();*/
         auto dataLang = QLocale(ui->languageComboBox->itemData(i).toString()).language();
 

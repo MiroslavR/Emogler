@@ -29,8 +29,10 @@ BaseWidgetSettings::BaseWidgetSettings(QSettings & s, QObject * parent)
 void BaseWidgetSettings::mapSetting(QWidget * w, const QString & set, bool user)
 {
     mWidgetMap[w] = {set, user};
-    w->setProperty(w->metaObject()->userProperty().name(), mSettings.value(mWidgetMap[w].set));
-    QObject::connect(w, w->metaObject()->userProperty().notifySignal(), mParent, mParent->metaObject()->method(mParent->metaObject()->indexOfSlot("fieldChanged()")));
+    if (user) {
+        w->setProperty(w->metaObject()->userProperty().name(), mSettings.value(mWidgetMap[w].set));
+        QObject::connect(w, w->metaObject()->userProperty().notifySignal(), mParent, mParent->metaObject()->method(mParent->metaObject()->indexOfSlot("fieldChanged()")));
+    }
 }
 
 

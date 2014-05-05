@@ -28,11 +28,18 @@ EmoglerCore * EmoglerCore::mInstance = nullptr;
 EmoglerCore::EmoglerCore(QObject * parent) :
     QObject(parent),
     mSettings(QSettings::IniFormat, QSettings::UserScope, "Emogler", "settings"),
-    mLanguage(mSettings.value("language", QLocale::system().name()).toString()),
+    mSystemLanguage(true),
     mConversationManager(mSettings),
     mEmoticonsManager(mSettings)
 {
-    setLanguage(mLanguage);
+    mLanguage = mSettings.value("language", "system").toString();
+    bool sys = mLanguage == "system";
+    setSystemLanguage(sys);
+
+    if (!sys) {
+        setLanguage(mLanguage);
+    }
+
     //qDebug() << "hmm" << QLocale("zh").name() << QLocale("zh_TW").name() << QLocale("zh_CN").name();
 }
 
@@ -55,6 +62,11 @@ QString EmoglerCore::language() const
     return mLanguage;
 }
 
+bool EmoglerCore::isSystemLanguage()
+{
+    return mSystemLanguage;
+}
+
 void EmoglerCore::setLanguage(const QString & lng)
 {
     qApp->removeTranslator(&mTranslator);
@@ -67,6 +79,14 @@ void EmoglerCore::setLanguage(const QString & lng)
 
     mLanguage = lng;
     emit languageChanged(lng);
+}
+
+void EmoglerCore::setSystemLanguage(bool sys)
+{
+    if (sys) {
+        setLanguage(QLocale::system().name());
+    }
+    mSystemLanguage = sys;
 }
 
 PluginManager & EmoglerCore::pluginManager()

@@ -214,6 +214,12 @@
         <source>Language:</source>
         <translation>Language:</translation>
     </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.cpp" line="44"/>
+        <location filename="../../src/gui/globalsettingsdialog.cpp" line="80"/>
+        <source>System language</source>
+        <translation>System language</translation>
+    </message>
 </context>
 <context>
     <name>Plugin</name>
