@@ -26,12 +26,12 @@
         <translation>This button displays a list of available emoticons to insert into your message.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/conversationwidget.ui" line="90"/>
+        <location filename="../../src/gui/conversationwidget.ui" line="94"/>
         <source>Execute command</source>
         <translation>Execute command</translation>
     </message>
     <message>
-        <location filename="../../src/gui/conversationwidget.ui" line="162"/>
+        <location filename="../../src/gui/conversationwidget.ui" line="176"/>
         <source>This button allows you to disconnect from the current tab&apos;s conversation.</source>
         <translation>This button allows you to disconnect from the current tab&apos;s conversation.</translation>
     </message>
@@ -48,14 +48,37 @@
         <translation>Emogler</translation>
     </message>
     <message>
-        <location filename="../../src/gui/emoglerwindow.ui" line="31"/>
+        <location filename="../../src/gui/emoglerwindow.ui" line="36"/>
         <source>Se&amp;ttings</source>
         <translation>Se&amp;ttings</translation>
     </message>
     <message>
-        <location filename="../../src/gui/emoglerwindow.ui" line="34"/>
+        <location filename="../../src/gui/emoglerwindow.ui" line="39"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/emoglerwindow.ui" line="48"/>
+        <source>&amp;Plug-ins</source>
+        <translation>&amp;Plug-ins</translation>
+    </message>
+</context>
+<context>
+    <name>EmoticonsTableModel</name>
+    <message>
+        <location filename="../../src/models/emoticonstablemodel.cpp" line="37"/>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <location filename="../../src/models/emoticonstablemodel.cpp" line="39"/>
+        <source>Use</source>
+        <translation>Use</translation>
+    </message>
+    <message>
+        <location filename="../../src/models/emoticonstablemodel.cpp" line="41"/>
+        <source>ID</source>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -66,105 +89,128 @@
         <translation>Settings</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="35"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="32"/>
         <source>General</source>
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="40"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="37"/>
         <source>Conversation</source>
         <translation>Conversation</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="49"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="46"/>
         <source>Features</source>
         <translation>Features</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="99"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="87"/>
         <source>Show on systray:</source>
         <translation>Show on systray:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="127"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="111"/>
+        <source>Emoticons</source>
+        <translation>Emoticons</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="117"/>
+        <source>Enabled</source>
+        <translation>Enabled</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="190"/>
+        <source>Move up</source>
+        <translation>Move up</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="193"/>
+        <source>▲</source>
+        <translation>▲</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="212"/>
+        <source>Move down</source>
+        <translation>Move down</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="215"/>
+        <source>▼</source>
+        <translation>▼</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="252"/>
         <source>Spell Checking</source>
         <translation>Spell Checking</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="136"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="261"/>
         <source>Enable</source>
         <translation>Enable</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="159"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="284"/>
         <source>Highlighting</source>
         <translation>Highlighting</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="168"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="293"/>
         <source>Highlight spelling mistakes:</source>
         <translation>Highlight spelling mistakes:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="178"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="303"/>
         <source>Highlight commands:</source>
         <translation>Highlight commands:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="197"/>
         <source>Name</source>
-        <translation>Name</translation>
+        <translation type="vanished">Name</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="202"/>
         <source>Description</source>
-        <translation>Description</translation>
+        <translation type="vanished">Description</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="225"/>
         <source>&amp;Details</source>
-        <translation>&amp;Details</translation>
+        <translation type="vanished">&amp;Details</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="235"/>
         <source>Se&amp;ttings</source>
-        <translation>Se&amp;ttings</translation>
+        <translation type="vanished">Se&amp;ttings</translation>
     </message>
     <message>
         <source>Summary</source>
         <translation type="vanished">Summary</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="207"/>
         <source>Extensions</source>
-        <translation>Extensions</translation>
+        <translation type="vanished">Extensions</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="212"/>
         <source>Protocols</source>
-        <translation>Protocols</translation>
+        <translation type="vanished">Protocols</translation>
     </message>
     <message>
         <source>Functions</source>
         <translation type="vanished">Functions</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="54"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="51"/>
         <source>Network</source>
         <translation>Network</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="59"/>
         <source>Plug-ins</source>
-        <translation>Plug-ins</translation>
+        <translation type="vanished">Plug-ins</translation>
     </message>
     <message>
         <source>Show systray:</source>
         <translation type="vanished">Show systray:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="109"/>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="146"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="97"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="271"/>
         <source>Language:</source>
         <translation>Language:</translation>
     </message>
@@ -172,17 +218,17 @@
 <context>
     <name>Plugin</name>
     <message>
-        <location filename="../../src/plugin/plugin.cpp" line="127"/>
+        <location filename="../../src/plugin/plugin.cpp" line="221"/>
         <source>Extension</source>
         <translation>Extension</translation>
     </message>
     <message>
-        <location filename="../../src/plugin/plugin.cpp" line="129"/>
+        <location filename="../../src/plugin/plugin.cpp" line="223"/>
         <source>Protocol</source>
         <translation>Protocol</translation>
     </message>
     <message>
-        <location filename="../../src/plugin/plugin.cpp" line="131"/>
+        <location filename="../../src/plugin/plugin.cpp" line="225"/>
         <source>Unknown</source>
         <translation>Unknown</translation>
     </message>
@@ -248,6 +294,44 @@ p, li { white-space: pre-wrap; }
         <location filename="../../src/gui/plugindetailsdialog.ui" line="135"/>
         <source>Dependencies:</source>
         <translation>Dependencies:</translation>
+    </message>
+</context>
+<context>
+    <name>PluginsDialog</name>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="14"/>
+        <source>Plug-Ins</source>
+        <translation>Plug-Ins</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="21"/>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="26"/>
+        <source>Description</source>
+        <translation>Description</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="31"/>
+        <source>Extensions</source>
+        <translation>Extensions</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="36"/>
+        <source>Protocols</source>
+        <translation>Protocols</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="49"/>
+        <source>&amp;Details</source>
+        <translation>&amp;Details</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="59"/>
+        <source>Se&amp;ttings</source>
+        <translation>Se&amp;ttings</translation>
     </message>
 </context>
 </TS>

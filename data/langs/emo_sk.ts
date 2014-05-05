@@ -26,12 +26,12 @@
         <translation>Toto tlačidlo zobrazí zoznam emotikónov, ktoré môžete vložiť do svojej správy.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/conversationwidget.ui" line="90"/>
+        <location filename="../../src/gui/conversationwidget.ui" line="94"/>
         <source>Execute command</source>
         <translation>Vykonať príkaz</translation>
     </message>
     <message>
-        <location filename="../../src/gui/conversationwidget.ui" line="162"/>
+        <location filename="../../src/gui/conversationwidget.ui" line="176"/>
         <source>This button allows you to disconnect from the current tab&apos;s conversation.</source>
         <translation>Toto tlačidlo vám umožní odpojiť sa z rozhovoru v aktuálnej karte.</translation>
     </message>
@@ -48,14 +48,37 @@
         <translation>Emogler</translation>
     </message>
     <message>
-        <location filename="../../src/gui/emoglerwindow.ui" line="31"/>
+        <location filename="../../src/gui/emoglerwindow.ui" line="36"/>
         <source>Se&amp;ttings</source>
         <translation>Nas&amp;tavenia</translation>
     </message>
     <message>
-        <location filename="../../src/gui/emoglerwindow.ui" line="34"/>
+        <location filename="../../src/gui/emoglerwindow.ui" line="39"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/emoglerwindow.ui" line="48"/>
+        <source>&amp;Plug-ins</source>
+        <translation>Zásuvné &amp;moduly</translation>
+    </message>
+</context>
+<context>
+    <name>EmoticonsTableModel</name>
+    <message>
+        <location filename="../../src/models/emoticonstablemodel.cpp" line="37"/>
+        <source>Name</source>
+        <translation>Názov</translation>
+    </message>
+    <message>
+        <location filename="../../src/models/emoticonstablemodel.cpp" line="39"/>
+        <source>Use</source>
+        <translation>Používať</translation>
+    </message>
+    <message>
+        <location filename="../../src/models/emoticonstablemodel.cpp" line="41"/>
+        <source>ID</source>
+        <translation>ID</translation>
     </message>
 </context>
 <context>
@@ -66,105 +89,128 @@
         <translation>Nastavenia</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="35"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="32"/>
         <source>General</source>
         <translation>Všeobecné</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="40"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="37"/>
         <source>Conversation</source>
         <translation>Rozhovor</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="49"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="46"/>
         <source>Features</source>
         <translation>Funkcie</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="99"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="87"/>
         <source>Show on systray:</source>
         <translation>Zobraziť na paneli oznámení:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="127"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="111"/>
+        <source>Emoticons</source>
+        <translation>Emotikóny</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="117"/>
+        <source>Enabled</source>
+        <translation>Povolené</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="190"/>
+        <source>Move up</source>
+        <translation>Presunúť vyššie</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="193"/>
+        <source>▲</source>
+        <translation>▲</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="212"/>
+        <source>Move down</source>
+        <translation>Presunúť nižšie</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="215"/>
+        <source>▼</source>
+        <translation>▼</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="252"/>
         <source>Spell Checking</source>
         <translation>Kontrola pravopisu</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="136"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="261"/>
         <source>Enable</source>
         <translation>Povoliť</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="159"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="284"/>
         <source>Highlighting</source>
         <translation>Zvýrazňovanie</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="168"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="293"/>
         <source>Highlight spelling mistakes:</source>
         <translation>Zvýrazňovať pravopisné chyby:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="178"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="303"/>
         <source>Highlight commands:</source>
         <translation>Zvýrazňovať príkazy:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="197"/>
         <source>Name</source>
-        <translation>Názov</translation>
+        <translation type="vanished">Názov</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="202"/>
         <source>Description</source>
-        <translation>Popis</translation>
+        <translation type="vanished">Popis</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="225"/>
         <source>&amp;Details</source>
-        <translation>&amp;Detaily</translation>
+        <translation type="vanished">&amp;Detaily</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="235"/>
         <source>Se&amp;ttings</source>
-        <translation>Nas&amp;tavenia</translation>
+        <translation type="vanished">Nas&amp;tavenia</translation>
     </message>
     <message>
         <source>Summary</source>
         <translation type="vanished">Zrhnutie</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="207"/>
         <source>Extensions</source>
-        <translation>Rozšírenia</translation>
+        <translation type="vanished">Rozšírenia</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="212"/>
         <source>Protocols</source>
-        <translation>Protokoly</translation>
+        <translation type="vanished">Protokoly</translation>
     </message>
     <message>
         <source>Functions</source>
         <translation type="vanished">Funkcie</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="54"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="51"/>
         <source>Network</source>
         <translation>Sieť</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="59"/>
         <source>Plug-ins</source>
-        <translation>Zásuvné moduly</translation>
+        <translation type="vanished">Zásuvné moduly</translation>
     </message>
     <message>
         <source>Show systray:</source>
         <translation type="vanished">Zobraziť na paneli oznámení:</translation>
     </message>
     <message>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="109"/>
-        <location filename="../../src/gui/globalsettingsdialog.ui" line="146"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="97"/>
+        <location filename="../../src/gui/globalsettingsdialog.ui" line="271"/>
         <source>Language:</source>
         <translation>Jazyk:</translation>
     </message>
@@ -172,17 +218,17 @@
 <context>
     <name>Plugin</name>
     <message>
-        <location filename="../../src/plugin/plugin.cpp" line="127"/>
+        <location filename="../../src/plugin/plugin.cpp" line="221"/>
         <source>Extension</source>
         <translation>Rozšírenie</translation>
     </message>
     <message>
-        <location filename="../../src/plugin/plugin.cpp" line="129"/>
+        <location filename="../../src/plugin/plugin.cpp" line="223"/>
         <source>Protocol</source>
         <translation>Protokol</translation>
     </message>
     <message>
-        <location filename="../../src/plugin/plugin.cpp" line="131"/>
+        <location filename="../../src/plugin/plugin.cpp" line="225"/>
         <source>Unknown</source>
         <translation>Neznáma</translation>
     </message>
@@ -248,6 +294,44 @@ p, li { white-space: pre-wrap; }
         <location filename="../../src/gui/plugindetailsdialog.ui" line="135"/>
         <source>Dependencies:</source>
         <translation>Závislosti:</translation>
+    </message>
+</context>
+<context>
+    <name>PluginsDialog</name>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="14"/>
+        <source>Plug-Ins</source>
+        <translation>Zásuvné moduly</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="21"/>
+        <source>Name</source>
+        <translation>Názov</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="26"/>
+        <source>Description</source>
+        <translation>Popis</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="31"/>
+        <source>Extensions</source>
+        <translation>Rozšírenia</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="36"/>
+        <source>Protocols</source>
+        <translation>Protokoly</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="49"/>
+        <source>&amp;Details</source>
+        <translation>&amp;Detaily</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/pluginsdialog.ui" line="59"/>
+        <source>Se&amp;ttings</source>
+        <translation>Nas&amp;tavenia</translation>
     </message>
 </context>
 </TS>
