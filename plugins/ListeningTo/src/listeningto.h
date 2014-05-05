@@ -10,10 +10,12 @@ class LISTENINGTOSHARED_EXPORT ListeningTo : public QObject, ExtensionInterface
     Q_OBJECT
 
     Q_PLUGIN_METADATA(IID "emogler.extension" FILE "plugininfo.json")
-    Q_INTERFACES(ExtensionInterface)
+    Q_INTERFACES(BasePluginInterface ExtensionInterface)
 
     public:
         ListeningTo();
+
+        virtual QIcon icon() override;
 };
 
 #endif // LISTENINGTO_H

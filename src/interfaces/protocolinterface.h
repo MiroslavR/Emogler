@@ -20,8 +20,9 @@
 #define PROTOCOLINTERFACE_H
 
 #include <QtPlugin>
+#include "baseplugininterface.h"
 
-class ProtocolInterface
+class ProtocolInterface : public BasePluginInterface
 {
     public:
         virtual ~ProtocolInterface() {}

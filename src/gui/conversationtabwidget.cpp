@@ -21,7 +21,8 @@
 
 ConversationTabWidget::ConversationTabWidget(QWidget * parent) :
     QWidget(parent),
-    ui(new Ui::ConversationTabWidget)
+    ui(new Ui::ConversationTabWidget),
+    mConversation(nullptr)
 {
     ui->setupUi(this);
 }

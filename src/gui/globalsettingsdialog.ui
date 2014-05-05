@@ -24,9 +24,6 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="uniformItemSizes">
-        <bool>true</bool>
-       </property>
        <property name="currentRow">
         <number>-1</number>
        </property>
@@ -54,15 +51,6 @@
          <string>Network</string>
         </property>
        </item>
-       <item>
-        <property name="text">
-         <string>Plug-ins</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../../icons.qrc">
-          <normaloff>:/data/gui/plugin.png</normaloff>:/data/gui/plugin.png</iconset>
-        </property>
-       </item>
       </widget>
      </item>
      <item>
@@ -86,7 +74,7 @@
          <item row="0" column="0">
           <widget class="QStackedWidget" name="stackedWidget">
            <property name="currentIndex">
-            <number>1</number>
+            <number>0</number>
            </property>
            <widget class="QWidget" name="pageGeneral">
             <layout class="QFormLayout" name="formLayout">
@@ -325,71 +313,6 @@
             </layout>
            </widget>
            <widget class="QWidget" name="pageNetwork"/>
-           <widget class="QWidget" name="pagePlugins">
-            <layout class="QVBoxLayout" name="verticalLayout_3">
-             <item>
-              <widget class="QTreeWidget" name="pluginTree">
-               <column>
-                <property name="text">
-                 <string>Name</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
-                 <string>Description</string>
-                </property>
-               </column>
-               <item>
-                <property name="text">
-                 <string>Extensions</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Protocols</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
-                <widget class="QPushButton" name="detailsButton">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="text">
-                  <string>&amp;Details</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QPushButton" name="settingsButton">
-                 <property name="enabled">
-                  <bool>false</bool>
-                 </property>
-                 <property name="text">
-                  <string>Se&amp;ttings</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <spacer name="horizontalSpacer">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>40</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-              </layout>
-             </item>
-            </layout>
-           </widget>
           </widget>
          </item>
         </layout>

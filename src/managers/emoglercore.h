@@ -43,11 +43,13 @@ class EmoglerCore : public QObject
         QString language() const;
         void setLanguage(const QString & lng);
 
+        //void setCurrentProtocol
+
         PluginManager & pluginManager();
         ConversationManager & conversationManager();
         EmoticonsManager & emoticonsManager();
 
-signals:
+    signals:
         void languageChanged(const QString & lng);
 
     public slots:

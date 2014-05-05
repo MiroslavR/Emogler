@@ -1,14 +1,16 @@
-QT       -= gui
+QT       += gui
 
 TARGET = ListeningTo
 TEMPLATE = lib
+
+QMAKE_CXXFLAGS += $$QMAKE_CXXFLAGS_HIDESYMS
 
 DEFINES += LISTENINGTO_LIBRARY
 
 INCLUDEPATH += src/
 INCLUDEPATH += ../../src/interfaces
 
-CONFIG += plugin no_plugin_name_prefix
+CONFIG += c++11 plugin no_plugin_name_prefix
 
 SOURCES += src/listeningto.cpp
 

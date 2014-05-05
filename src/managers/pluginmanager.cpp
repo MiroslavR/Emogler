@@ -28,35 +28,6 @@ PluginManager::PluginManager()
 {
 }
 
-int PluginManager::loadLibrary(const QString & name)
-{
-    QPluginLoader * loader = new QPluginLoader(QString("./plugins/%1").arg(name));
-
-    //qDebug() << loader->metaData() << loader->metaData()["MetaData"].contains("name");
-
-    QObject * root = loader->instance();
-
-    qDebug() << "loading" << name;
-    if (!root) {
-        qDebug() << QString("Failed to load %1: %2").arg(name).arg(loader->errorString());
-        loader->unload();
-        return LoaderError;
-    }
-
-    /*
-     * Check meta data:
-     * category, name - required
-     * author, version, description, dependencies - optional
-    */
-
-        //||  (!loader->metaData().contains("name") || loader->metaData().value("name").toString().isEmpty())
-
-    qDebug() << loader->metaData().value("name").toString();
-
-    loader->unload();
-    return Unknown;
-}
-
 PluginManager::ErrorCode PluginManager::addLibrary(const QString & id)
 {
     QPluginLoader * loader = new QPluginLoader(QString("./plugins/%1").arg(id));
@@ -128,6 +99,7 @@ void PluginManager::loadAllLibraries(const QDir & path)
 
         //loadLibrary(info.fileName());
         addLibrary(info.fileName());
+        mPlugins[info.fileName()]->load();
     }
 }
 

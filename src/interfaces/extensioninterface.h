@@ -20,8 +20,9 @@
 #define EXTENSIONINTERFACE_H
 
 #include <QtPlugin>
+#include "baseplugininterface.h"
 
-class ExtensionInterface
+class ExtensionInterface : public BasePluginInterface
 {
     public:
         virtual ~ExtensionInterface() {}

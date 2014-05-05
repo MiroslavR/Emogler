@@ -25,7 +25,6 @@
 #include <QDebug>
 
 #include "managers/emoglercore.h"
-#include "gui/plugindetailsdialog.h"
 
 
 GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
@@ -53,8 +52,6 @@ GlobalSettingsDialog::GlobalSettingsDialog(QWidget * parent) :
 
     ui->languageComboBox->setCurrentIndex(0);
 
-    populatePluginTree();
-
     mapSetting(ui->showSystrayCheckBox, "showSystray", true);
     mapSetting(ui->languageComboBox, "language", false);
     mapSetting(ui->emoticonsEnabledCheckBox, "Conversation/enableEmoticons", true);
@@ -71,48 +68,12 @@ void GlobalSettingsDialog::fieldChanged()
     ui->buttonBox->button(QDialogButtonBox::Apply)->setEnabled(true);
 }
 
-void GlobalSettingsDialog::populatePluginTree()
-{
-    // remove children of top level items
-    for (int i = 0; i < ui->pluginTree->topLevelItemCount(); i++) {
-        QTreeWidgetItem * it = ui->pluginTree->topLevelItem(i);
-        while (it->childCount())
-            it->takeChild(0);
-    }
-
-    EmoglerCore & core = EmoglerCore::instance();
-    PluginManager & pman = core.pluginManager();
-    for (Plugin * pl : pman.plugins()) {
-        QTreeWidgetItem * it;
-
-        switch (pl->category()) {
-            case Plugin::Extension:
-                it = new QTreeWidgetItem(ui->pluginTree->topLevelItem(0));
-                break;
-            case Plugin::Protocol:
-                it = new QTreeWidgetItem(ui->pluginTree->topLevelItem(1));
-                break;
-            default:
-                continue;
-        }
-
-        it->setText(0, pl->name(core.language()));
-        it->setText(1, pl->description(core.language()));
-        it->setCheckState(0, (pl->isLoaded()) ? Qt::Checked : Qt::Unchecked);
-        it->setData(0, Qt::UserRole, QVariant::fromValue<Plugin *>(pl));
-    }
-
-    ui->pluginTree->expandAll();
-    ui->pluginTree->resizeColumnToContents(0);
-}
-
 void GlobalSettingsDialog::changeEvent(QEvent * e)
 {
     QDialog::changeEvent(e);
     switch (e->type()) {
         case QEvent::LanguageChange:
             ui->retranslateUi(this);
-            populatePluginTree();
             break;
         default:
             break;
@@ -159,22 +120,6 @@ void GlobalSettingsDialog::loadSettings()
 GlobalSettingsDialog::~GlobalSettingsDialog()
 {
     delete ui;
-}
-
-void GlobalSettingsDialog::on_pluginTree_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * /*previous*/)
-{
-    QVariant data = current->data(0, Qt::UserRole);
-    ui->detailsButton->setEnabled(data.isValid());
-}
-
-void GlobalSettingsDialog::on_detailsButton_clicked()
-{
-    QVariant data = ui->pluginTree->currentItem()->data(0, Qt::UserRole);
-    if (data.isValid()) {
-        Plugin * pl = data.value<Plugin *>();
-        PluginDetailsDialog dlg(this, *pl);
-        dlg.exec();
-    }
 }
 
 void GlobalSettingsDialog::moveEmoticonPack(int step)

@@ -39,7 +39,9 @@ class EmoglerWindow : public QMainWindow
     private slots:
         void on_actionSettings_triggered();
 
-    private:
+        void on_actionPlugins_triggered();
+
+private:
             Ui::EmoglerWindow * ui;
 };
 

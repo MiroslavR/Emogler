@@ -47,12 +47,6 @@ class GlobalSettingsDialog : public QDialog, public BaseWidgetSettings
         /*void mapSetting(QWidget * w, const QString & set, const QString & prop = QString::null);
         void commit();*/
 
-        void populatePluginTree();
-
-        void on_pluginTree_currentItemChanged(QTreeWidgetItem * current, QTreeWidgetItem * previous);
-
-        void on_detailsButton_clicked();
-
         void on_upButton_clicked();
 
         void on_downButton_clicked();

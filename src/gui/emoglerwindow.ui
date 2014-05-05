@@ -25,6 +25,7 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionSettings"/>
+   <addaction name="actionPlugins"/>
   </widget>
   <action name="actionSettings">
    <property name="icon">
@@ -36,6 +37,15 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+T</string>
+   </property>
+  </action>
+  <action name="actionPlugins">
+   <property name="icon">
+    <iconset resource="../../icons.qrc">
+     <normaloff>:/data/gui/plugin.png</normaloff>:/data/gui/plugin.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Plug-ins</string>
    </property>
   </action>
  </widget>

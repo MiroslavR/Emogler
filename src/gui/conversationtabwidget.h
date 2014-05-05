@@ -20,6 +20,7 @@
 #define CONVERSATIONTABWIDGET_H
 
 #include <QWidget>
+#include "conversation/conversation.h"
 
 namespace Ui {
 class ConversationTabWidget;
@@ -35,6 +36,7 @@ class ConversationTabWidget : public QWidget
 
     private:
         Ui::ConversationTabWidget * ui;
+        Conversation * mConversation;
 };
 
 #endif // CONVERSATIONTABWIDGET_H

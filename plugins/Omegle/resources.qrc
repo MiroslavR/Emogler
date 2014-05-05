@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/Omegle">
+        <file>icon.png</file>
+    </qresource>
+</RCC>

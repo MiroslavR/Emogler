@@ -19,14 +19,75 @@
 #include "plugin.h"
 
 #include <QApplication>
+#include <QDebug>
 
 Plugin::Plugin(Category cat, QString id, QPluginLoader * loader) :
     mCategory(cat),
     mID(id),
     mLoader(loader),
+    mInterface(nullptr),
     mLoaded(false)
 {
     Q_ASSERT(cat != Plugin::Unknown);
+}
+
+Plugin::~Plugin()
+{
+    unload();
+}
+
+Plugin::ErrorCode Plugin::load()
+{
+    Q_ASSERT(mLoader != nullptr);
+
+    QObject * root = mLoader->instance();
+
+    if (!root) {
+        qDebug() << QString("Failed to load %1: %2").arg(mID).arg(mLoader->errorString());
+        mLoader->unload();
+        return LoaderError;
+    }
+
+    Q_ASSERT(mInterface == nullptr);
+
+    BasePluginInterface * iface = qobject_cast<BasePluginInterface *>(root);
+    if (!iface) {
+        return BadInterface;
+    }
+
+    if (mCategory == Extension && !qobject_cast<ExtensionInterface *>(root)) {
+        return BadInterface;
+    }
+
+    if (mCategory == Protocol && !qobject_cast<ProtocolInterface *>(root)) {
+        return BadInterface;
+    }
+
+    mInterface = iface;
+    mIcon = mInterface->icon();
+
+    mLoaded = true;
+    return Success;
+}
+
+void Plugin::unload()
+{
+    Q_ASSERT(mLoader != nullptr);
+
+    if (mLoaded) {
+        mLoader->unload();
+        mInterface = nullptr;
+        mLoaded = false;
+    }
+}
+
+void Plugin::toggleLoad()
+{
+    if (mLoaded) {
+        unload();
+    } else {
+        load();
+    }
 }
 
 Plugin::Category Plugin::category() const
@@ -49,6 +110,11 @@ QString Plugin::name(const QLocale & loc) const
         return QString();
     }
     return mName[loc];
+}
+
+QIcon Plugin::icon() const
+{
+    return mIcon;
 }
 
 QString Plugin::author() const
@@ -76,6 +142,11 @@ QString Plugin::description(const QLocale & loc) const
 QPluginLoader * Plugin::loader() const
 {
     return mLoader;
+}
+
+BasePluginInterface *Plugin::interface() const
+{
+    return mInterface;
 }
 
 bool Plugin::isLoaded() const
@@ -113,6 +184,11 @@ void Plugin::setName(const QLocale & loc, const QString & name)
     mName[loc] = name;
 }
 
+void Plugin::setIcon(const QIcon & icon)
+{
+    mIcon = icon;
+}
+
 void Plugin::setAuthor(const QString & author)
 {
     mAuthor = author;
@@ -126,6 +202,16 @@ void Plugin::setVersion(const QString & ver)
 void Plugin::setDescription(const QLocale & loc, const QString & desc)
 {
     mDescription[loc] = desc;
+}
+
+void Plugin::setInterface(BasePluginInterface * iface)
+{
+    mInterface = iface;
+}
+
+void Plugin::addDependency(const QString & dep)
+{
+    mDependencies << dep;
 }
 
 QString Plugin::categoryString(Plugin::Category cat)

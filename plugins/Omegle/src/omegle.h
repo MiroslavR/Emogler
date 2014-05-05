@@ -10,10 +10,12 @@ class OMEGLESHARED_EXPORT Omegle : public QObject, ProtocolInterface
     Q_OBJECT
 
     Q_PLUGIN_METADATA(IID "emogler.protocol" FILE "plugininfo.json")
-    Q_INTERFACES(ProtocolInterface)
+    Q_INTERFACES(BasePluginInterface ProtocolInterface)
 
     public:
         Omegle();
+
+        virtual QIcon icon() override;
 };
 
 #endif // OMEGLE_H

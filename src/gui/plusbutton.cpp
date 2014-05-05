@@ -41,6 +41,7 @@ void PlusButton::contextMenuEvent(QContextMenuEvent * e)
         qDebug() << "PlusButton" << pl->name(core.language()) << pl->isLoaded();
         if (pl->category() == Plugin::Protocol && pl->isLoaded()) {
             QAction * ac = new QAction(QIcon(), pl->name(core.language()), group);
+            ac->setData(QVariant::fromValue(pl));
             menu.addAction(ac);
         }
     }

@@ -22,6 +22,7 @@
 
 #include "conversationwidget.h"
 #include "globalsettingsdialog.h"
+#include "pluginsdialog.h"
 #include "managers/emoglercore.h"
 
 EmoglerWindow::EmoglerWindow(QWidget * parent) :
@@ -65,4 +66,10 @@ void EmoglerWindow::on_actionSettings_triggered()
         ui->actionSettings->setEnabled(true);
     });
     dlg->show();
+}
+
+void EmoglerWindow::on_actionPlugins_triggered()
+{
+    PluginsDialog dlg(this);
+    dlg.exec();
 }

@@ -1,16 +1,16 @@
-QT       += network
-
-QT       -= gui
+QT       += gui network
 
 TARGET = Omegle
 TEMPLATE = lib
+
+QMAKE_CXXFLAGS += $$QMAKE_CXXFLAGS_HIDESYMS
 
 DEFINES += OMEGLE_LIBRARY
 
 INCLUDEPATH += src/
 INCLUDEPATH += ../../src/interfaces
 
-CONFIG += plugin no_plugin_name_prefix
+CONFIG += c++11 plugin no_plugin_name_prefix
 
 SOURCES += src/omegle.cpp
 
@@ -24,3 +24,6 @@ unix {
 
 OTHER_FILES += \
     src/plugininfo.json
+
+RESOURCES += \
+    resources.qrc

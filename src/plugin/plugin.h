@@ -23,10 +23,22 @@
 #include <QStringList>
 #include <QLocale>
 #include <QPluginLoader>
+#include <QIcon>
+
+#include "interfaces/baseplugininterface.h"
+#include "interfaces/extensioninterface.h"
+#include "interfaces/protocolinterface.h"
 
 class Plugin
 {
     public:
+        enum ErrorCode {
+            Success = 1,
+            UnknownFailure = 0,
+            LoaderError = -1,
+            BadInterface = -2
+        };
+
         enum Category {
             Unknown,
             Extension,
@@ -34,15 +46,22 @@ class Plugin
         };
 
         Plugin(Category cat, QString id, QPluginLoader * loader);
+        virtual ~Plugin();
+
+        virtual ErrorCode load();
+        virtual void unload();
+        void toggleLoad();
 
         Category category() const;
         QString id() const;
         QString name(const QLocale & loc) const;
+        QIcon icon() const;
         QString author() const;
         QString version() const;
         QString description(const QLocale & loc) const;
         const QStringList & dependencies() const;
         QPluginLoader * loader() const;
+        BasePluginInterface * interface() const;
         bool isLoaded() const;
 
         bool hasAuthor();
@@ -51,9 +70,12 @@ class Plugin
         bool hasDependencies();
 
         void setName(const QLocale & loc, const QString & name);
+        void setIcon(const QIcon & icon);
         void setAuthor(const QString & author);
         void setVersion(const QString & ver);
         void setDescription(const QLocale & loc, const QString & desc);
+        void setInterface(BasePluginInterface * iface);
+        void addDependency(const QString & dep);
 
         static QString categoryString(Category cat);
 
@@ -61,11 +83,13 @@ class Plugin
         Category mCategory;
         QString mID;
         QHash<QLocale, QString> mName;
+        QIcon mIcon;
         QString mAuthor;
         QString mVersion;
         QHash<QLocale, QString> mDescription;
         QStringList mDependencies;
         QPluginLoader * mLoader;
+        BasePluginInterface * mInterface;
         bool mLoaded;
 };
 

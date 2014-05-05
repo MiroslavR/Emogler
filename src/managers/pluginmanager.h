@@ -39,7 +39,6 @@ class PluginManager
 
         PluginManager();
 
-        int loadLibrary(const QString & name);
         ErrorCode addLibrary(const QString & id);
         void loadAllLibraries(const QDir & path);
 
