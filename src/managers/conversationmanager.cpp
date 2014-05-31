@@ -38,6 +38,9 @@ Conversation * ConversationManager::newConversation(const QString & prId)
         Plugin * pl = pman.plugins()[prId];
         if (pl->category() == Plugin::Protocol) {
             //return new Conversation(static_cast<Protocol *>(pl));
+            Conversation * convo = new Conversation();
+            mConversations << convo;
+            return convo;
         }
     }
     return nullptr;

@@ -26,17 +26,20 @@
 
 ConversationWidget::ConversationWidget(QWidget * parent) :
     QWidget(parent),
-    ui(new Ui::ConversationWidget)
+    ui(new Ui::ConversationWidget),
+    mCurrentProtocol(nullptr)
 {
     ui->setupUi(this);
 
-    ui->conversationTabWidget->setCornerWidget(new PlusButton(this));
+    PlusButton * plusButton = new PlusButton(ui->conversationTabWidget);
+    plusButton->setMinimumHeight(32);
+    ui->conversationTabWidget->setCornerWidget(plusButton);
 
-    QWidget * wTab = new ConversationTabWidget(this);
-    ui->conversationTabWidget->addTab(wTab, "Test");
+    connect(plusButton, &PlusButton::currentProtocolChanged, this, [this](Plugin * pl) {
+        mCurrentProtocol = pl;
+    });
 
-    QWidget * wTab2 = new ConversationTabWidget(this);
-    ui->conversationTabWidget->addTab(wTab2, "Test2");
+    connect(plusButton, &QPushButton::clicked, this, &ConversationWidget::addTabCurrentProtocol);
 }
 
 ConversationWidget::~ConversationWidget()
@@ -44,9 +47,35 @@ ConversationWidget::~ConversationWidget()
     delete ui;
 }
 
-void ConversationWidget::addTab(const QString & prId)
+void ConversationWidget::changeEvent(QEvent * e)
 {
+    QWidget::changeEvent(e);
+    switch (e->type()) {
+        case QEvent::LanguageChange:
+            ui->retranslateUi(this);
+            break;
+        default:
+            break;
+    }
+}
 
+void ConversationWidget::addTab(const Plugin * pl)
+{
+    ConversationManager & cman = EmoglerCore::instance().conversationManager();
+    Conversation * convo = cman.newConversation(pl->id());
+    if (convo) {
+        ConversationTabWidget * wTab = new ConversationTabWidget(this);
+        wTab->setConversation(convo);
+        ui->conversationTabWidget->addTab(wTab, pl->icon(), "Test");
+    }
+}
+
+void ConversationWidget::addTabCurrentProtocol()
+{
+    if (mCurrentProtocol == nullptr)
+        return;
+
+    addTab(mCurrentProtocol);
 }
 
 void ConversationWidget::on_emoticonsButton_clicked()

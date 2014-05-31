@@ -20,13 +20,30 @@
 #define CONVERSATION_H
 
 #include <QObject>
+#include <QDateTime>
 
 class Conversation : public QObject
 {
     Q_OBJECT
 
     public:
+        enum class Message {
+            Regular = 0x1,
+            You = 0x2,
+            Stranger = 0x4,
+            Information = 0x8,
+            Error = 0x10,
+            AddLine = 0x20
+        };
+
         Conversation();
+
+        void addPlainTextMessage(Message type, const QDateTime & dt, const QString & msg, const QString & who = "");
+        void addCustomMessage(const QDateTime & dt, const QString & msg);
+
+    signals:
+        void plainTextMessage(Message type, const QDateTime & dt, const QString & msg, const QString & who);
+        void customMessage(const QDateTime & dt, const QString & msg);
 };
 
 #endif // CONVERSATION_H

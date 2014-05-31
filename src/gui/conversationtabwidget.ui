@@ -27,7 +27,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QTextBrowser" name="textBrowser"/>
+    <widget class="ConversationBrowser" name="textBrowser"/>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -86,6 +86,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ConversationBrowser</class>
+   <extends>QTextBrowser</extends>
+   <header>gui/conversationbrowser.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../../icons.qrc"/>
  </resources>

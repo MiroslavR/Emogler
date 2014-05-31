@@ -19,15 +19,57 @@
 #include "conversationtabwidget.h"
 #include "ui_conversationtabwidget.h"
 
+#include <QTime>
+
 ConversationTabWidget::ConversationTabWidget(QWidget * parent) :
     QWidget(parent),
     ui(new Ui::ConversationTabWidget),
     mConversation(nullptr)
 {
     ui->setupUi(this);
+    //ui->textBrowser->addMessage("Hello, world!", QTime::currentTime());
+}
+
+void ConversationTabWidget::changeEvent(QEvent * e)
+{
+    QWidget::changeEvent(e);
+    switch (e->type()) {
+        case QEvent::LanguageChange:
+            ui->retranslateUi(this);
+            break;
+        default:
+            break;
+    }
 }
 
 ConversationTabWidget::~ConversationTabWidget()
 {
     delete ui;
+}
+
+void ConversationTabWidget::setConversation(Conversation * convo)
+{
+    if (mConversation == convo)
+        return;
+
+    if (mConversation)
+        removeConversation();
+
+    mConversation = convo;
+    connect(mConversation, &Conversation::plainTextMessage, ui->textBrowser, [this](Conversation::Message type, const QDateTime & dt, const QString & msg, const QString & who) {
+        ui->textBrowser->addMessage(type, dt.time(), msg, who);
+    });
+}
+
+void ConversationTabWidget::removeConversation()
+{
+    if (mConversation == nullptr)
+        return;
+
+    mConversation->disconnect(ui->textBrowser);
+}
+
+const Conversation * ConversationTabWidget::conversation() const
+{
+    return mConversation;
 }

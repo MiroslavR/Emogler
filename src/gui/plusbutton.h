@@ -22,6 +22,8 @@
 #include <QHelpEvent>
 #include <QToolButton>
 
+#include "plugin/plugin.h"
+
 class PlusButton : public QToolButton
 {
     Q_OBJECT
@@ -31,6 +33,9 @@ class PlusButton : public QToolButton
 
     protected:
         virtual void contextMenuEvent(QContextMenuEvent * e) override;
+
+    signals:
+        void currentProtocolChanged(Plugin * pl);
 };
 
 #endif // PLUSBUTTON_H

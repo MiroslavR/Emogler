@@ -34,6 +34,13 @@ class ConversationTabWidget : public QWidget
         explicit ConversationTabWidget(QWidget * parent = 0);
         ~ConversationTabWidget();
 
+        void setConversation(Conversation * convo);
+        void removeConversation();
+        const Conversation * conversation() const;
+
+    protected:
+        virtual void changeEvent(QEvent * e) override;
+
     private:
         Ui::ConversationTabWidget * ui;
         Conversation * mConversation;

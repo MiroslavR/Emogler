@@ -34,7 +34,7 @@ class EmoglerWindow : public QMainWindow
         ~EmoglerWindow();
 
     protected:
-        void changeEvent(QEvent * e);
+        virtual void changeEvent(QEvent * e) override;
 
     private slots:
         void on_actionSettings_triggered();

@@ -135,7 +135,7 @@
         </size>
        </property>
        <property name="text">
-        <string notr="true">New</string>
+        <string>New</string>
        </property>
        <property name="icon">
         <iconset resource="../../icons.qrc">
@@ -176,7 +176,7 @@
         <string>This button allows you to disconnect from the current tab's conversation.</string>
        </property>
        <property name="text">
-        <string notr="true">Disconnect</string>
+        <string>Disconnect</string>
        </property>
        <property name="icon">
         <iconset resource="../../icons.qrc">

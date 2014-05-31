@@ -31,9 +31,19 @@
         <translation>Vykonať príkaz</translation>
     </message>
     <message>
+        <location filename="../../src/gui/conversationwidget.ui" line="138"/>
+        <source>New</source>
+        <translation>Nový</translation>
+    </message>
+    <message>
         <location filename="../../src/gui/conversationwidget.ui" line="176"/>
         <source>This button allows you to disconnect from the current tab&apos;s conversation.</source>
         <translation>Toto tlačidlo vám umožní odpojiť sa z rozhovoru v aktuálnej karte.</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/conversationwidget.ui" line="179"/>
+        <source>Disconnect</source>
+        <translation>Odpojiť sa</translation>
     </message>
 </context>
 <context>

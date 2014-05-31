@@ -20,6 +20,7 @@
 
 #include "managers/emoglercore.h"
 #include <QActionGroup>
+#include <QMessageBox>
 #include <QMenu>
 #include <QDebug>
 
@@ -36,18 +37,26 @@ void PlusButton::contextMenuEvent(QContextMenuEvent * e)
 
     QMenu menu;
     QActionGroup * group = new QActionGroup(&menu);
+    int count = 0;
     for (const QString & id : pman.plugins().keys()) {
         Plugin * pl = pman.plugins().value(id);
         qDebug() << "PlusButton" << pl->name(core.language()) << pl->isLoaded();
         if (pl->category() == Plugin::Protocol && pl->isLoaded()) {
             QAction * ac = new QAction(QIcon(), pl->name(core.language()), group);
             ac->setData(QVariant::fromValue(pl));
-            menu.addAction(ac);
+            menu.addAction(ac); 
+            count++;
         }
     }
 
-    connect(group, &QActionGroup::triggered, this, [](QAction * ac) {
+    if (!count) {
+        QMessageBox::critical(this, tr("No Protocols"), tr("There are no protocol plug-ins loaded."));
+        return;
+    }
+
+    connect(group, &QActionGroup::triggered, this, [this](QAction * ac) {
         // change protocol
+        emit currentProtocolChanged(ac->data().value<Plugin *>());
     });
     menu.exec(e->globalPos());
 }

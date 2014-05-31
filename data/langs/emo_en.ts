@@ -31,9 +31,19 @@
         <translation>Execute command</translation>
     </message>
     <message>
+        <location filename="../../src/gui/conversationwidget.ui" line="138"/>
+        <source>New</source>
+        <translation>New</translation>
+    </message>
+    <message>
         <location filename="../../src/gui/conversationwidget.ui" line="176"/>
         <source>This button allows you to disconnect from the current tab&apos;s conversation.</source>
         <translation>This button allows you to disconnect from the current tab&apos;s conversation.</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/conversationwidget.ui" line="179"/>
+        <source>Disconnect</source>
+        <translation>Disconnect</translation>
     </message>
 </context>
 <context>

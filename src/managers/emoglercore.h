@@ -23,6 +23,8 @@
 #include <QSettings>
 #include <QTranslator>
 
+#include "interfaces/coreinterface.h"
+
 #include "managers/pluginmanager.h"
 #include "managers/conversationmanager.h"
 #include "managers/emoticonsmanager.h"
@@ -42,10 +44,9 @@ class EmoglerCore : public QObject
 
         QString language() const;
         bool isSystemLanguage();
+
         void setLanguage(const QString & lng);
         void setSystemLanguage(bool sys);
-
-        //void setCurrentProtocol
 
         PluginManager & pluginManager();
         ConversationManager & conversationManager();

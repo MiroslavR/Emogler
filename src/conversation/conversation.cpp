@@ -21,3 +21,13 @@
 Conversation::Conversation()
 {
 }
+
+void Conversation::addPlainTextMessage(Conversation::Message type, const QDateTime & dt, const QString & msg, const QString & who)
+{
+    emit plainTextMessage(type, dt, msg, who);
+}
+
+void Conversation::addCustomMessage(const QDateTime & dt, const QString & msg)
+{
+    emit customMessage(dt, msg);
+}

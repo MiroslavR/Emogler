@@ -20,6 +20,7 @@
 #define CONVERSATIONWIDGET_H
 
 #include <QWidget>
+#include "plugin/plugin.h"
 
 namespace Ui {
 class ConversationWidget;
@@ -33,13 +34,19 @@ class ConversationWidget : public QWidget
         explicit ConversationWidget(QWidget * parent = 0);
         ~ConversationWidget();
 
-        void addTab(const QString & prId);
+    public slots:
+        void addTab(const Plugin * pl);
+        void addTabCurrentProtocol();
+
+    protected:
+        virtual void changeEvent(QEvent * e) override;
 
     private slots:
         void on_emoticonsButton_clicked();
 
     private:
         Ui::ConversationWidget * ui;
+        Plugin * mCurrentProtocol;
 };
 
 #endif // CONVERSATIONWIDGET_H

@@ -7,7 +7,8 @@ SOURCES  += $$PWD/emoglerwindow.cpp \
     src/gui/basewidgetsettings.cpp \
     src/gui/emoticonsmenu.cpp \
     src/gui/plusbutton.cpp \
-    src/gui/pluginsdialog.cpp
+    src/gui/pluginsdialog.cpp \
+    src/gui/conversationbrowser.cpp
 
 HEADERS  += $$PWD/emoglerwindow.h \
     $$PWD/conversationwidget.h \
@@ -18,7 +19,8 @@ HEADERS  += $$PWD/emoglerwindow.h \
     src/gui/basewidgetsettings.h \
     src/gui/emoticonsmenu.h \
     src/gui/plusbutton.h \
-    src/gui/pluginsdialog.h
+    src/gui/pluginsdialog.h \
+    src/gui/conversationbrowser.h
 
 FORMS    += $$PWD/emoglerwindow.ui \
     $$PWD/conversationwidget.ui \
